@@ -9,6 +9,8 @@
 import axios from "axios";
 import { getAccessToken, setAccessToken, clearAccessToken } from "../utils/tokenManger";
 
+const APIURL = import.meta.env.VITE_API_BASE_URL;
+
 // Define the current user, if user is login in
 let currentUser = null;
 export function setCurrentUser(user) {
@@ -22,8 +24,7 @@ export function clearCurrentUser() {
 }
 
 const axiosInstance = axios.create({
-	baseURL: "http://localhost:5000/api",
-	// baseURL: " http://10.156.7.148:5173/api",
+	baseURL: `${APIURL}/api`,
 	withCredentials: true
 });
 
@@ -52,7 +53,7 @@ axiosInstance.interceptors.response.use(
 			try {
 				// const response = await axiosInstance.get("/auth/refresh", { withCredentials: true });
 				const response = await axios.get(
-					"http://localhost:5000/api/auth/refresh",
+					`${APIURL}/api/auth/refresh`,
 					{ withCredentials: true }
 				);
 
