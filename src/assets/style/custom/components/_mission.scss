@@ -1,0 +1,100 @@
+// ===============================
+// Mission Page Styles
+// ===============================
+
+.mission-page {
+    background-color: #ffffff;
+}
+
+.mission-section-soft {
+    background-color: #f8f9fa;
+}
+
+// Strategic Objectives - icon + card
+.mission-icon-circle {
+    width: 48px;
+    height: 48px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff7ed;
+    color: #f97316;
+    border: 1px solid rgba(249, 115, 22, 0.25);
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+}
+
+.mission-icon {
+    font-size: 1.25rem;
+}
+
+.mission-objective-card {
+    border-radius: 1rem;
+    background-color: #ffffff;
+    box-shadow: 0 10px 28px rgba(15, 23, 42, 0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    .card-body {
+        padding: 1.5rem 1.5rem;
+    }
+
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 14px 36px rgba(15, 23, 42, 0.08);
+
+        .mission-icon-circle {
+            background-color: #f97316;
+            color: #ffffff;
+        }
+    }
+}
+
+// Impact in Numbers - stat cards
+.mission-impact-card {
+    border-radius: 1rem;
+    background-color: #ffffff;
+    box-shadow: 0 10px 28px rgba(15, 23, 42, 0.06);
+
+    .card-body {
+        padding: 1.5rem 1rem;
+    }
+}
+
+.mission-impact-icon {
+    color: #f97316;
+    font-size: 1.5rem;
+}
+
+.mission-impact-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #f97316;
+    line-height: 1.2;
+}
+
+// Our Commitment - list card
+.mission-commitment-card {
+    border-radius: 1rem;
+    background-color: #ffffff;
+    box-shadow: 0 10px 28px rgba(15, 23, 42, 0.06);
+}
+
+.mission-commitment-item {
+    &:last-child {
+        margin-bottom: 0 !important;
+    }
+}
+
+.mission-commitment-check {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    color: #f97316;
+    font-size: 0.85rem;
+}

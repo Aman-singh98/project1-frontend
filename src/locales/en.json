@@ -1,0 +1,160 @@
+{
+  "language": {
+    "english": "English",
+    "hindi": "Hindi",
+    "bengali": "Bengali",
+    "select": "Select Language"
+  },
+  "header": {
+    "topbar": {
+      "ambulance": "Ambulance",
+      "internship": "Internship",
+      "firstAidKit": "First Aid Kit",
+      "helpline": "HelpLine-18001234568",
+      "courses": "Courses",
+      "login": "Login"
+    },
+    "navbar": {
+      "home": "Home",
+      "about": "About",
+      "aboutUs": "About us",
+      "mission": "Mission",
+      "vision": "Vision",
+      "courses": "Courses",
+      "gallery": "Gallery",
+      "faqs": "FAQs",
+      "blogs": "Blogs"
+    }
+  },
+  "home": {
+    "hero": {
+      "ariaLabel": "First aid training highlights",
+      "titlePrefix": "Empowering India with",
+      "titleAccent": "lifesaving first aid skills",
+      "subtitle": "Learn, certify, and serve with practical, hands-on training programs designed for individuals, institutions, and communities.",
+      "goToSlide": "Go to slide {{index}}",
+      "slides": {
+        "1": {
+          "alt": "Hands-on first aid training session",
+          "caption": "Practical, scenario-based first aid learning."
+        },
+        "2": {
+          "alt": "Emergency response handbook",
+          "caption": "Easy-to-follow reference for emergencies."
+        },
+        "3": {
+          "alt": "Automated external defibrillator in use",
+          "caption": "Life-saving technology with proper training."
+        },
+        "4": {
+          "alt": "Skill development initiatives",
+          "caption": "Nationwide reach through skill development."
+        },
+        "5": {
+          "alt": "Training partners and institutions",
+          "caption": "Strong network of institutions and partners."
+        }
+      }
+    },
+    "stats": {
+      "volunteer": "Volunteer",
+      "training": "Training",
+      "skillCentre": "Skill Centre",
+      "faculty": "Faculty"
+    },
+    "whatWeDo": {
+      "title": "What We Do",
+      "subtitle": "A complete ecosystem for first aid and emergency preparedness – from training to community engagement.",
+      "items": {
+        "firstAidTraining": {
+          "title": "First Aid Training",
+          "description": "Structured, certified courses that turn ordinary people into confident first responders."
+        },
+        "communityOutreach": {
+          "title": "Community Outreach",
+          "description": "Awareness drives, workshops, and campaigns to build a culture of safety in communities."
+        },
+        "institutionalPartnerships": {
+          "title": "Institutional Partnerships",
+          "description": "Collaborations with schools, colleges, and corporates to embed lifesaving skills."
+        }
+      }
+    },
+    "journey": {
+      "title": "Your Journey to Certification",
+      "subtitle": "Follow our simple 5-step process to become a certified first aid professional.",
+      "steps": {
+        "step01": {
+          "label": "Step 01",
+          "title": "Enrolment",
+          "description": "Register online or with your nearest centre."
+        },
+        "step02": {
+          "label": "Step 02",
+          "title": "Training",
+          "description": "Attend practical sessions with expert trainers."
+        },
+        "step03": {
+          "label": "Step 03",
+          "title": "Assessment",
+          "description": "Demonstrate your skills in guided evaluations."
+        },
+        "step04": {
+          "label": "Step 04",
+          "title": "Certificate",
+          "description": "Receive your recognised first aid certification."
+        },
+        "step05": {
+          "label": "Step 05",
+          "title": "Placement",
+          "description": "Apply your skills in real-world roles and services."
+        }
+      }
+    },
+    "testimonials": {
+      "title": "What Our Students Say",
+      "subtitle": "Hear from learners and professionals about their experience with our training programs.",
+      "viewAll": "View All",
+      "ariaPrev": "Previous testimonials",
+      "ariaNext": "Next testimonials"
+    },
+    "leadership": {
+      "title": "Our Leadership",
+      "subtitle": "Meet the team that makes our training programs possible.",
+      "viewAll": "View All"
+    },
+    "training": {
+      "title": "Training in Action",
+      "subtitle": "Take a glimpse at our training sessions and facilities.",
+      "viewAll": "View All"
+    }
+  },
+  "courses": {
+    "heroTitle": "Our Courses",
+    "heroSubtitle": "Explore our comprehensive range of Healthcare training and certification programs designed to equip you with life-saving skills.",
+    "filters": "Filters",
+    "category": "Category",
+    "noCategories": "No categories",
+    "mode": "Mode",
+    "priceRange": "Price Range",
+    "clearFilters": "Clear Filters",
+    "searchPlaceholder": "Search courses...",
+    "showingZero": "Showing 0 courses",
+    "showingRange": "Showing {{start}}–{{end}} of {{total}} courses",
+    "noCourses": "No courses found.",
+    "courseDuration": "Course Duration",
+    "modeLabel": "Mode",
+    "languageLabel": "Language",
+    "daysSuffix": "day(s)",
+    "fallbackDash": "—",
+    "enrollNow": "Enroll Now",
+    "pagination": {
+      "prev": "Previous page",
+      "next": "Next page"
+    }
+  },
+  "common": {
+    "viewAll": "View All"
+  }
+}
+

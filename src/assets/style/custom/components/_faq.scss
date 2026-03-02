@@ -1,0 +1,274 @@
+// ===============================
+// FAQ Page + Contact Section
+// ===============================
+
+.faq-page {
+    background-color: #f9fafb;
+  }
+  
+  // Toolbar
+  .faq-toolbar {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.75rem;
+  
+    @media (min-width: 768px) {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+  
+  // Search (same look as gallery search)
+  .faq-search {
+    flex: 1;
+    max-width: 100%;
+    position: relative;
+  
+    @media (min-width: 576px) {
+      max-width: 450px;
+    }
+  
+    .form-control {
+      border-radius: 999px;
+      border: 2px solid #e5e7eb;
+      padding: 0.75rem 1rem 0.75rem 3rem;
+      font-size: 0.95rem;
+      background-color: #ffffff;
+      color: #111827;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  
+      &::placeholder {
+        color: #9ca3af;
+      }
+  
+      &:focus {
+        border-color: #22c55e;
+        box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.15);
+        outline: none;
+      }
+    }
+  
+    .search-icon {
+      position: absolute;
+      left: 1.1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.1rem;
+      color: #9ca3af;
+      pointer-events: none;
+      transition: color 0.2s;
+    }
+  
+    &:focus-within .search-icon {
+      color: #22c55e;
+    }
+  }
+  
+  .faq-toolbar-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  
+    @media (min-width: 576px) {
+      flex-direction: row;
+      align-items: center;
+      gap: 1rem;
+    }
+  }
+  
+  .faq-status {
+    font-size: 0.9rem;
+    color: #6b7280;
+  }
+  
+  .faq-category-dropdown > button.dropdown-toggle {
+    border-radius: 999px;
+    border: 1px solid #e5e7eb;
+    background-color: #ffffff;
+    color: #374151;
+    font-size: 0.9rem;
+    padding: 0.45rem 0.9rem;
+  }
+  
+  // Accordion items
+  .faq-item {
+    border-radius: 14px !important;
+    border: 1px solid #e5e7eb;
+    overflow: hidden;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+    margin-bottom: 0.75rem;
+  }
+  
+  .faq-item .accordion-button {
+    background-color: #ffffff;
+    padding: 0.85rem 1.25rem;
+    font-weight: 600;
+    color: #111827;
+    border: none;
+  
+    &:not(.collapsed) {
+      background-color: #f9fafb;
+      box-shadow: inset 0 -1px 0 #e5e7eb;
+    }
+  }
+  
+  .faq-item .accordion-body {
+    padding: 0.9rem 1.25rem 1rem;
+  }
+  
+  .faq-item-header {
+    // display: flex;
+    // align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    // justify-content: space-between;
+  }
+  
+  .faq-question-text {
+    font-size: 0.98rem;
+    font-weight: 600;
+    color: #111827;
+    margin-right: 10px;
+  }
+  
+  .faq-category-badge {
+    border-radius: 999px;
+    border: 1px solid rgba(209, 213, 219, 0.9);
+    color: #0f766e;
+    background-color: #ecfeff !important;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+  
+  .faq-answer-text {
+    margin-bottom: 0.6rem;
+    font-size: 0.93rem;
+    color: #4b5563;
+  }
+  
+  .faq-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  
+  .faq-tag-pill {
+    font-size: 0.75rem;
+    padding: 0.15rem 0.55rem;
+    border-radius: 999px;
+    background-color: #eef2ff;
+    color: #4338ca;
+  }
+  
+  // ===============================
+  // Contact + Submit Query Section
+  // ===============================
+  
+  .faq-contact-section {
+    background: linear-gradient(90deg, #fff7ed 0%, #ffffff 40%, #f0f9ff 100%);
+  }
+  
+  .contact-title {
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: #f15a24;
+  }
+  
+  .contact-subtitle {
+    font-size: 0.95rem;
+    color: #4b5563;
+  }
+  
+  .contact-info-block {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+  
+  .contact-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 999px;
+    background-color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(15, 23, 42, 0.1);
+    color: #f15a24;
+    flex-shrink: 0;
+  }
+  
+  .contact-label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #111827;
+  }
+  
+  .contact-link,
+  .contact-text {
+    font-size: 0.9rem;
+    color: #4b5563;
+  }
+  
+  .contact-link {
+    text-decoration: none;
+  
+    &:hover {
+      text-decoration: underline;
+      color: #f15a24;
+    }
+  }
+  
+  .contact-email {
+    color: #f15a24;
+  }
+  
+  // Query card
+  .query-card {
+    background-color: #ffffff;
+    border-radius: 18px;
+    padding: 1.5rem 1.75rem;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+  }
+  
+  .query-title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #111827;
+  }
+  
+  .query-form .form-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #374151;
+  }
+  
+  .query-form .form-control,
+  .query-form .form-select {
+    border-radius: 10px;
+    border: 1px solid #d1d5db;
+    font-size: 0.9rem;
+  
+    &:focus {
+      border-color: #22c55e;
+      box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.15);
+    }
+  }
+  
+  .query-submit-btn {
+    border-radius: 999px;
+    background-color: #f97316;
+    border-color: #f97316;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  
+    &:hover {
+      background-color: #ea580c;
+      border-color: #ea580c;
+    }
+  }
+  

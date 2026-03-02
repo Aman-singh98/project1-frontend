@@ -1,0 +1,75 @@
+// ===============================
+// Vision Page Styles
+// ===============================
+
+.vision-page {
+    background-color: #ffffff;
+}
+
+.vision-section-soft {
+    background-color: #f8f9fa;
+}
+
+// Cards (match mission/about)
+.vision-card {
+    border-radius: 1rem;
+    background-color: #ffffff;
+    box-shadow: 0 10px 28px rgba(15, 23, 42, 0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    .card-body {
+        padding: 1.5rem 1.5rem;
+    }
+
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 14px 36px rgba(15, 23, 42, 0.08);
+
+        .vision-icon-circle {
+            background-color: #f97316;
+            color: #ffffff;
+        }
+    }
+}
+
+.vision-icon-circle {
+    width: 48px;
+    height: 48px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff7ed;
+    color: #f97316;
+    border: 1px solid rgba(249, 115, 22, 0.25);
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+}
+
+.vision-icon {
+    font-size: 1.25rem;
+}
+
+// Path cards
+.vision-path-card {
+    border-radius: 1rem;
+    background-color: #ffffff;
+    box-shadow: 0 10px 28px rgba(15, 23, 42, 0.06);
+
+    .card-body {
+        padding: 1.25rem 1.25rem;
+    }
+}
+
+.vision-path-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    color: #f97316;
+    font-size: 0.9rem;
+}
+

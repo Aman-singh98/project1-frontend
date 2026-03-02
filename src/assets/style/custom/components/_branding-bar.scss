@@ -1,0 +1,106 @@
+/* ============== Waving Flag ============== */
+/* Container sets perspective so the 3D transform looks realistic */
+.waving-flag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 1200px;
+  }
+  
+  /* The "cloth" is what actually waves */
+  .waving-flag__cloth {
+    position: relative;
+    width: min(180px, 40vw);
+    aspect-ratio: 3 / 2; /* Indian flag aspect ratio */
+    overflow: hidden; /* hides any extra background around the image */
+    border-radius: 6px;
+    transform-origin: left center;
+    transform-style: preserve-3d;
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+    animation: waving-flag-wave 3.2s ease-in-out infinite;
+    background-color: #f5f5f5;
+  }
+  
+  /* Slightly oversize the image so any useless background edges are cropped */
+  .waving-flag__image {
+    width: 115%;
+    height: 115%;
+    object-fit: cover; /* trims extra background, keeps flag area visible */
+    display: block;
+    transform-origin: left center;
+  }
+  
+  /* Lighting overlay to simulate moving highlights across the fabric */
+  .waving-flag__cloth::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      120deg,
+      rgba(255, 255, 255, 0.5),
+      transparent 40%,
+      rgba(0, 0, 0, 0.4) 80%
+    );
+    mix-blend-mode: soft-light;
+    pointer-events: none;
+    animation: waving-flag-light 3.2s ease-in-out infinite;
+  }
+  
+  /* Soft drop shadow "behind" the flag for depth */
+  .waving-flag__cloth::after {
+    content: "";
+    position: absolute;
+    top: 10%;
+    bottom: 10%;
+    right: -18px;
+    width: 24px;
+    background: radial-gradient(
+      circle at left center,
+      rgba(0, 0, 0, 0.35),
+      transparent 70%
+    );
+    opacity: 0.8;
+    transform: translateZ(-18px);
+    pointer-events: none;
+  }
+  
+  /* Main wave motion: small 3D rotation + skew to suggest fabric movement */
+  @keyframes waving-flag-wave {
+    0% {
+      transform: rotateY(0deg) skewY(0deg) translateX(0);
+    }
+    25% {
+      transform: rotateY(-10deg) skewY(-1.6deg) translateX(3px);
+    }
+    50% {
+      transform: rotateY(7deg) skewY(1.4deg) translateX(-2px);
+    }
+    75% {
+      transform: rotateY(-8deg) skewY(-1.2deg) translateX(2px);
+    }
+    100% {
+      transform: rotateY(0deg) skewY(0deg) translateX(0);
+    }
+  }
+  
+  /* Highlight sweep follows the wave to mimic changing light */
+  @keyframes waving-flag-light {
+    0% {
+      transform: translateX(-10%);
+      opacity: 0.65;
+    }
+    50% {
+      transform: translateX(10%);
+      opacity: 0.95;
+    }
+    100% {
+      transform: translateX(-10%);
+      opacity: 0.65;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .waving-flag__cloth {
+      width: 200px;
+    }
+  }

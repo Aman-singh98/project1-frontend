@@ -1,0 +1,33 @@
+// Top news bar
+.top-news-wrapper {
+    width: 100%;
+    background-color: #eef0f3;
+    /* light gray like screenshot */
+    border-bottom: 1px solid #d6dce2;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 14px;
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+.top-news-content {
+    display: inline-block;
+    padding: 6px 0;
+    animation: scrollNews 30s linear infinite;
+}
+
+@keyframes scrollNews {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* Optional hover pause */
+.top-news-wrapper:hover .top-news-content {
+    animation-play-state: paused;
+}

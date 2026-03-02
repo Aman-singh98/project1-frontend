@@ -1,0 +1,24 @@
+// Common css
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.text-orange {
+  color: #ff7a00;
+}
+
+.btn-orange {
+  background-color: #ff7a00;
+  border: none;
+}
+
+.btn-orange:hover {
+  background-color: #e56700;
+}
+
+.full-height-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

@@ -1,0 +1,11 @@
+.need-help-sticky {
+    position: sticky;
+    top: 100px;
+}
+
+@media (max-width: 991px) {
+    .need-help-sticky {
+        position: static;
+        margin-top: 1rem;
+    }
+}

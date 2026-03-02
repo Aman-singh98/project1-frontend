@@ -1,0 +1,103 @@
+.branding-bar {
+    // mobile-first layout
+    .branding-bar__inner {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0.35rem;
+    }
+  
+    .branding-bar__org-logo {
+      height: 44px;
+      width: 44px;
+      object-fit: cover;
+    }
+  
+    .branding-bar__org-text {
+      line-height: 1.1;
+    }
+  
+    .branding-bar__org-title {
+      font-size: 0.9rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #c51f26; // red like in screenshot
+    }
+  
+    .branding-bar__org-subtitle {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #1c8b46; // green like in screenshot
+    }
+  
+    .branding-bar__flag {
+      .branding-flag {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+  
+      .branding-flag__img {
+        height: 50px;
+        width: auto;
+        object-fit: contain;
+        display: block;
+      }
+    }
+  
+    .branding-bar__partners {
+      // on very small screens logos wrap nicely into 2 lines
+      .branding-bar__partner-logo {
+        max-height: 45px;
+        width: auto;
+        object-fit: contain;
+        display: block;
+      }
+    }
+  
+    // ≥576px (sm) – more breathing space, slightly larger visuals
+    @media (min-width: 576px) {
+      .branding-bar__inner {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+      }
+  
+      .branding-bar__org-logo {
+        height: 52px;
+        width: 52px;
+      }
+  
+      .branding-flag__img {
+        height: 48px;
+      }
+    }
+  
+    // ≥992px (lg) – desktop / large header
+    @media (min-width: 992px) {
+      .branding-bar__org-logo {
+        height: 64px;
+        width: 64px;
+      }
+  
+      .branding-bar__org-title {
+        font-size: 1.05rem;
+      }
+  
+      .branding-bar__org-subtitle {
+        font-size: 0.75rem;
+      }
+  
+      .branding-flag__img {
+        height: 60px;
+      }
+  
+      .branding-bar__partner-logo {
+        max-height: 34px;
+      }
+    }
+  }
