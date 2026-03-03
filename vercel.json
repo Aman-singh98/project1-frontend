@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://project1-backend-1qar.onrender.com/api/:path*"
+    }
+  ]
+}

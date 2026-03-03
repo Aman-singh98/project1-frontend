@@ -10,6 +10,7 @@ import axios from "axios";
 import { getAccessToken, setAccessToken, clearAccessToken } from "../utils/tokenManger";
 
 const APIURL = import.meta.env.VITE_API_BASE_URL;
+console.log(import.meta.env.VITE_API_BASE_URL)
 
 // Define the current user, if user is login in
 let currentUser = null;
@@ -23,9 +24,12 @@ export function clearCurrentUser() {
   currentUser = null;
 }
 
+// const axiosInstance = axios.create({
+// 	baseURL: `${APIURL}/api`,
+// 	withCredentials: true
+// });
 const axiosInstance = axios.create({
-	baseURL: `${APIURL}/api`,
-	withCredentials: true
+  baseURL: "/api"
 });
 
 /**
