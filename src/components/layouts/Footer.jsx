@@ -14,13 +14,6 @@ import { quickLinks, popularCourses } from "../../assets/data/footer";
 function Footer() {
 	return (
 		<>
-			{/* <div className="footer-partner-section">
-				<Container>
-					<div className="partner-slider-box">
-						<ContinuousFooterSlider />
-					</div>
-				</Container>
-			</div> */}
 			<div className="footer-partner-wrapper">
 				<Container>
 					<div className="partner-floating-box">
@@ -146,7 +139,7 @@ function Footer() {
 								rel="noopener noreferrer"
 								className="text-orange"
 							>
-								Nosh infotech
+								DIGITAL CHAMPS
 							</a>
 						</p>
 					</Container>

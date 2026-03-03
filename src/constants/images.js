@@ -60,8 +60,26 @@ import image30 from "../assets/images/Image30.jpeg";
 import image31 from "../assets/images/Image31.jpeg";
 import image32 from "../assets/images/Image32.jpeg";
 import image33 from "../assets/images/Image33.jpeg";
+import cpr from "../assets/images/CPR.jpeg";
+import emergencyResponse from "../assets/images/EmergencyTeam.jpeg";
+import firstAid from "../assets/images/FirstAID.jpeg";
+import firstAidKit from "../assets/images/FistAidKit.jpeg";
+import saftyFirst from "../assets/images/SaftyWork.jpeg";
+import amit from "../assets/images/Amit.jpeg";
+import priya from "../assets/images/Priya.jpeg";
+import rajesh from "../assets/images/Rajesh.jpeg";
+import sneha from "../assets/images/Sneha.jpeg";
 
 export const IMAGES = {
+    Amit: amit,
+    Priya: priya,
+    Rajesh: rajesh,
+    Sneha: sneha,
+    CPR: cpr,
+    EMR_RESP: emergencyResponse,
+    FIRSTAID: firstAid,
+    FIRSTAIDKIT: firstAidKit,
+    SAFTYfIRST: saftyFirst,
     RED_LOGO: redLogo,
     BLACK_LOGO: blackLogo,
     INDIAN_FLAG: indiaFlag,

@@ -1,7 +1,34 @@
-/* ========= Skeleton Loader ========= */
+/* ==============================
+   CUSTOM CONTAINER WIDTHS
+============================== */
 
-// $prefix: tejas-;
+@media (min-width: 576px) {
+  .container {
+    max-width: 40rem;
+  }
+}
 
-// :root {
-// 	--#{$prefix}body-font-family: "Open Sans", system-ui;
-// }
+@media (min-width: 768px) {
+  .container {
+    max-width: 48rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 64rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 80rem;
+
+  }
+}
+
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1250px;
+  }
+}

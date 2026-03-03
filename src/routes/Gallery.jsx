@@ -83,7 +83,8 @@ function Gallery() {
                         {paginatedImages.map((img) => (
                             <Col xs={12} sm={6} lg={3} key={img.id}>
                                 <Card
-                                    className="gallery-card h-100 shadow-sm"
+                                    // className="gallery-card h-100 shadow-sm"
+                                    className="border-0 h-100 position-relative training-card shadow-sm"
                                     onClick={() => handleCardClick(img)}
                                     role="button"
                                     tabIndex={0}
@@ -94,13 +95,16 @@ function Gallery() {
                                         }
                                     }}
                                 >
-                                    <div className="gallery-card-img-wrapper">
+                                    {/* <div className="gallery-card-img-wrapper"> */}
+                                    <div className="card-img-wrapper">
                                         <Card.Img
                                             variant="top"
                                             src={img.src}
                                             alt={img.name}
                                             loading="lazy"
                                             fluid
+                                            className="h-100 w-100"
+                                            style={{ objectFit: 'cover' }}
                                         />
                                         <div className="gallery-card-overlay">
                                             <div className="gallery-card-badges">
@@ -146,7 +150,7 @@ function Gallery() {
                         </div>
                     )}
                 </Container>
-            </section>
+            </section >
             <Modal
                 show={!!selectedImage}
                 onHide={handleCloseModal}
