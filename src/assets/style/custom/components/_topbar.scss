@@ -1,0 +1,29 @@
+/* styling add for the top bar */
+.topbar-wrapper {
+  font-size: 13px;
+}
+
+.top-links a {
+  color: #fff;
+  text-decoration: none;
+  padding: 0 6px;
+  white-space: nowrap;
+  transition: 0.2s ease;
+}
+
+/* Separator */
+.top-links a:not(:last-child)::after {
+  content: "|";
+  margin-left: 8px;
+  color: #aaa;
+}
+
+/* Hover */
+.top-links a:hover {
+  text-decoration: underline;
+}
+
+/* Buttons wrap properly */
+.topbar-wrapper .btn {
+  white-space: nowrap;
+}

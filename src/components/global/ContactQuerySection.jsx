@@ -4,24 +4,13 @@
  */
 import { useState } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
-
-// Minimal state/district mapping – extend as needed
-const INDIA_STATE_DISTRICTS = {
-    Rajasthan: ["Jaipur", "Jodhpur", "Udaipur", "Kota", "Ajmer"],
-    Haryana: ["Hisar", "Gurugram", "Faridabad", "Panipat", "Rohtak"],
-    "Uttar Pradesh": ["Lucknow", "Noida", "Ghaziabad", "Kanpur", "Varanasi"],
-    Delhi: ["New Delhi", "North Delhi", "South Delhi", "East Delhi", "West Delhi"],
-    Maharashtra: ["Mumbai", "Pune", "Nagpur", "Nashik", "Thane"],
-    Karnataka: ["Bengaluru", "Mysuru", "Mangaluru", "Belagavi", "Hubballi"],
-};
+import { INDIA_STATE_DISTRICTS } from "../../assets/data/faq";
 
 const STATE_OPTIONS = Object.keys(INDIA_STATE_DISTRICTS);
 
 // Feedback type options
 const FEEDBACK_TYPES = ["Suggestion", "Complaints", "Query", "Others"];
-
-function ContactQuerySection() {
-    const [formData, setFormData] = useState({
+const formDefaultData = {
         name: "",
         mobile: "",
         email: "",
@@ -29,11 +18,13 @@ function ContactQuerySection() {
         district: "",
         feedbackType: "",
         message: "",
-    });
+    };
+
+function ContactQuerySection() {
+    const [formData, setFormData] = useState(formDefaultData);
 
     const handleChange = (field) => (e) => {
         const value = e.target.value;
-
         setFormData((prev) => {
             if (field === "state") {
                 // Reset district when state changes
@@ -43,12 +34,11 @@ function ContactQuerySection() {
         });
     };
 
-    const handleSubmit = (e) => {
+    function handleSubmit(e) {
         e.preventDefault();
         // TODO: Replace with real API call
-        // eslint-disable-next-line no-console
         console.log("Submit query payload:", formData);
-    };
+    }
 
     const districtOptions =
         formData.state && INDIA_STATE_DISTRICTS[formData.state]
@@ -59,7 +49,6 @@ function ContactQuerySection() {
         <section className="faq-contact-section py-5">
             <Container>
                 <Row className="g-4 align-items-start">
-                    {/* Contact details */}
                     <Col xs={12} lg={5}>
                         <h2 className="contact-title mb-3">Contact Us</h2>
                         <p className="contact-subtitle mb-4">
@@ -73,8 +62,8 @@ function ContactQuerySection() {
                             </div>
                             <div>
                                 <h6 className="contact-label mb-1">Contact Number</h6>
-                                <a href="tel:+918814088115" className="contact-link">
-                                    +91 8814088115
+                                <a href="tel:+917414425125" className="contact-link">
+                                    +91 7414425125
                                 </a>
                             </div>
                         </div>
@@ -95,7 +84,6 @@ function ContactQuerySection() {
                                 </p>
                             </div>
                         </div>
-
                         <div className="contact-info-block">
                             <div className="contact-icon">
                                 <i className="bi bi-envelope-fill" />
@@ -103,16 +91,14 @@ function ContactQuerySection() {
                             <div>
                                 <h6 className="contact-label mb-1">Email</h6>
                                 <a
-                                    href="mailto:ceo@saintcouncil.co.in"
+                                    href="mailto:co@stjohncouncil.co.in"
                                     className="contact-link contact-email"
                                 >
-                                    ceo@saintcouncil.co.in
+                                    co@stjohncouncil.co.in
                                 </a>
                             </div>
                         </div>
                     </Col>
-
-                    {/* Submit query form */}
                     <Col xs={12} lg={7}>
                         <div className="query-card">
                             <h3 className="query-title mb-3">Submit Query</h3>
@@ -171,7 +157,7 @@ function ContactQuerySection() {
                                                 required
                                             >
                                                 <option value="">Select State</option>
-                                                {STATE_OPTIONS.map((state) => (
+                                                {STATE_OPTIONS?.map((state) => (
                                                     <option key={state} value={state}>
                                                         {state}
                                                     </option>
@@ -195,7 +181,7 @@ function ContactQuerySection() {
                                                         ? "Select District"
                                                         : "Select state first"}
                                                 </option>
-                                                {districtOptions.map((district) => (
+                                                {districtOptions?.map((district) => (
                                                     <option key={district} value={district}>
                                                         {district}
                                                     </option>
@@ -214,7 +200,7 @@ function ContactQuerySection() {
                                                 required
                                             >
                                                 <option value="">Select Feedback Type</option>
-                                                {FEEDBACK_TYPES.map((type) => (
+                                                {FEEDBACK_TYPES?.map((type) => (
                                                     <option key={type} value={type}>
                                                         {type}
                                                     </option>
@@ -239,11 +225,7 @@ function ContactQuerySection() {
                                         </Form.Group>
                                     </Col>
                                     <Col xs={12}>
-                                        <Button
-                                            type="submit"
-                                            className="w-100 query-submit-btn"
-                                            variant="warning"
-                                        >
+                                        <Button type="submit" className="w-100 btn-orange rounded-5" variant="">
                                             SUBMIT
                                         </Button>
                                     </Col>

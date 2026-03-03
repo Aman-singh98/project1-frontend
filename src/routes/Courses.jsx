@@ -246,7 +246,7 @@ function Courses() {
 							)}
 							{totalPages > 1 && (
 								<div className="d-flex justify-content-center mt-4">
-									<Pagination className="mb-0">
+									<Pagination className="mb-0 gallery-pagination">
 										<Pagination.Prev
 											disabled={currentPage <= 1}
 											onClick={() => handlePageChange(currentPage - 1)}

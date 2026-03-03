@@ -2,7 +2,7 @@
 .footer-main {
   background: #000;
   color: #ccc;
-  padding: 60px 0 0;
+  padding: 70px 0 0;
   font-size: 14px;
 }
 
@@ -166,57 +166,100 @@
   }
 }
 
-/* Section background */
-.footer-partner-section {
-  position:relative;
-  background: #f8f9fa;
-  padding: 30px 0;
+/* ===============================
+   FLOATING PARTNER SECTION
+   Mobile First
+================================ */
 
-  .container {
-    position: absolute;
-    top: 20px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-  }
+.footer-partner-wrapper {
+  position: relative;
+  z-index: 2;
+  margin-bottom: -40px;
+  /* pulls footer upward */
+  padding: 0 12px;
 }
 
-/* White rounded box */
-.partner-slider-box {
+/* White floating card */
+.partner-floating-box {
   background: #ffffff;
-  border-radius: 12px;
-  padding: 0px 0px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  border-radius: 14px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
   overflow: hidden;
 }
 
-.footer-swiper .swiper-slide {
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-.footer-swiper .swiper-wrapper {
-  gap: 0 !important;
-}
-
-// /* Logo styling */
+/* Logo styling */
 .footer-partner-logo {
+  height: 40px;
   width: auto;
   object-fit: contain;
 }
 
-@media (max-width: 768px) {
+/* Swiper alignment */
+.footer-swiper .swiper-wrapper {
+  align-items: center;
+}
+
+.footer-swiper .swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ===============================
+   MAIN FOOTER
+================================ */
+
+.main-footer {
+  background: #000;
+  padding-top: 70px;
+  /* space for floating card */
+  padding-bottom: 40px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===============================
+   Tablet
+================================ */
+
+@media (min-width: 576px) {
   .footer-partner-logo {
-    height: 45px;
+    height: 50px;
   }
 
-  .partner-slider-box {
-    padding: 15px;
+  .partner-floating-box {
+    padding: 20px;
+    border-radius: 16px;
+  }
+
+  .footer-partner-wrapper {
+    margin-bottom: -50px;
+  }
+
+  .main-footer {
+    padding-top: 90px;
   }
 }
 
-@media (max-width: 480px) {
+/* ===============================
+   Desktop
+================================ */
+
+@media (min-width: 992px) {
   .footer-partner-logo {
-    height: 35px;
+    height: 60px;
+  }
+
+  .partner-floating-box {
+    padding: 25px 30px;
+    border-radius: 18px;
+  }
+
+  .footer-partner-wrapper {
+    margin-bottom: -60px;
+  }
+
+  .main-footer {
+    padding-top: 110px;
   }
 }

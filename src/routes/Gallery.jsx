@@ -3,21 +3,13 @@
  * Production-ready gallery with search, pagination, and image lightbox.
  */
 import { useState, useMemo, useCallback } from "react";
-import HeroSection from "../components/global/HeroSection";
+import { Container, Row, Col, Card, Modal, Form, Pagination, Button } from "react-bootstrap";
 import { IMAGES } from "../constants/images";
-import { galleryImages } from "../assets/data/galleryImages";
 import { formatDisplayDate } from "../utils/dateFormat";
-import {
-    Container,
-    Row,
-    Col,
-    Card,
-    Modal,
-    Form,
-    Pagination,
-} from "react-bootstrap";
-import "bootstrap-icons/font/bootstrap-icons.css";
+import HeroSection from "../components/global/HeroSection";
+import { galleryImages } from "../assets/data/galleryImages";
 
+// Constants
 const ITEMS_PER_PAGE = 12;
 
 function Gallery() {
@@ -69,7 +61,6 @@ function Gallery() {
                 subtitle="Explore our training sessions, events, and success stories through our photo gallery."
                 backgroundImage={IMAGES.AMBULANCE}
             />
-
             <section className="py-5 gallery-page">
                 <Container>
                     <div className="gallery-toolbar">
@@ -88,7 +79,6 @@ function Gallery() {
                             Showing {startItem}–{endItem} of {filteredImages.length} images
                         </span>
                     </div>
-
                     <Row className="g-4">
                         {paginatedImages.map((img) => (
                             <Col xs={12} sm={6} lg={3} key={img.id}>
@@ -110,6 +100,7 @@ function Gallery() {
                                             src={img.src}
                                             alt={img.name}
                                             loading="lazy"
+                                            fluid
                                         />
                                         <div className="gallery-card-overlay">
                                             <div className="gallery-card-badges">
@@ -127,7 +118,6 @@ function Gallery() {
                             </Col>
                         ))}
                     </Row>
-
                     {totalPages > 1 && (
                         <div className="gallery-pagination">
                             <Pagination className="mb-0">
@@ -165,14 +155,14 @@ function Gallery() {
                 className="gallery-modal"
             >
                 <Modal.Header>
-                    <button
+                    <Button
                         type="button"
                         className="modal-close-btn"
                         onClick={handleCloseModal}
                         aria-label="Close"
                     >
                         &times;
-                    </button>
+                    </Button>
                 </Modal.Header>
                 <Modal.Body>
                     {selectedImage && (
