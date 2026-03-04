@@ -14,16 +14,17 @@
 
 import { Dropdown } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { ROUTERS } from "../../constants/router";
 
-function ProfileDropdown({ user, handleLogout }) {
+function ProfileDropdown({ user, handleLogout, setShowProfile }) {
     const navigate = useNavigate();
 
     return (
         <Dropdown align="end">
             <Dropdown.Toggle
                 variant="light"
-                className="rounded-circle border d-flex align-items-center justify-content-center"
-                style={{ width: "40px", height: "40px" }}
+                className="rounded-circle border d-flex align-items-center justify-content-center no-caret"
+                style={{ width: "30px", height: "30px", backgroundColor: "#B74929", fontSize: '14px' }}
             >
                 {user?.fullName?.charAt(0)?.toUpperCase()}
             </Dropdown.Toggle>
@@ -36,7 +37,6 @@ function ProfileDropdown({ user, handleLogout }) {
                     overflow: "hidden",
                 }}
             >
-                {/* Greeting Section */}
                 <div
                     className="px-3 py-2"
                     style={{
@@ -47,18 +47,16 @@ function ProfileDropdown({ user, handleLogout }) {
                     Hello, {user?.fullName}
                 </div>
                 <Dropdown.Divider className="m-0" />
-                {/* Profile */}
                 <Dropdown.Item
-                    onClick={() => navigate("/profile")}
+                    onClick={() => setShowProfile(true)}
                     className="d-flex align-items-center gap-2"
                 >
                     <i className="bi bi-person" />
                     Profile
                 </Dropdown.Item>
-                {/* Dashboard (Admin Only) */}
                 {user?.role === "admin" && (
                     <Dropdown.Item
-                        onClick={() => navigate("/admin/dashboard")}
+                        onClick={() => navigate(`/admin/${ROUTERS.Dashboard}`)}
                         className="d-flex align-items-center gap-2"
                     >
                         <i className="bi bi-grid" />
@@ -66,8 +64,8 @@ function ProfileDropdown({ user, handleLogout }) {
                     </Dropdown.Item>
                 )}
                 <Dropdown.Divider className="m-0" />
-                {/* Logout */}
                 <Dropdown.Item onClick={handleLogout} className="text-danger fw-semibold">
+                    <i class="bi bi-box-arrow-right me-2" />
                     Logout
                 </Dropdown.Item>
             </Dropdown.Menu>

@@ -14,14 +14,17 @@ import { Outlet } from "react-router-dom";
 
 function AdminLayout() {
   return (
-    <div className="admin-layout">
-      <header>
-        <h2>Admin Panel</h2>
-      </header>
-      <main>
-        <Outlet />
-      </main>
-    </div>
+    // <div className="admin-layout">
+    //   <header>
+    //     <h2>Admin Panel</h2>
+    //   </header>
+    //   <main>
+    //     <Outlet />
+    //   </main>
+    // </div>
+    <main>
+      <Outlet />
+    </main>
   );
 }
 

@@ -33,20 +33,20 @@
       color: #1c8b46; // green like in screenshot
     }
   
-    .branding-bar__flag {
-      .branding-flag {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-      }
+    // .branding-bar__flag {
+    //   .branding-flag {
+    //     display: inline-flex;
+    //     align-items: center;
+    //     justify-content: center;
+    //   }
   
-      .branding-flag__img {
-        height: 50px;
-        width: auto;
-        object-fit: contain;
-        display: block;
-      }
-    }
+    //   .branding-flag__img {
+    //     height: 50px;
+    //     width: auto;
+    //     object-fit: contain;
+    //     display: block;
+    //   }
+    // }
   
     .branding-bar__partners {
       // on very small screens logos wrap nicely into 2 lines

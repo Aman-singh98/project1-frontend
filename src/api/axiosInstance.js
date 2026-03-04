@@ -10,7 +10,6 @@ import axios from "axios";
 import { getAccessToken, setAccessToken, clearAccessToken } from "../utils/tokenManger";
 
 const APIURL = import.meta.env.VITE_API_BASE_URL;
-console.log(import.meta.env.VITE_API_BASE_URL)
 
 // Define the current user, if user is login in
 let currentUser = null;

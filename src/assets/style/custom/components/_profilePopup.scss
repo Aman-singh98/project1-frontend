@@ -1,0 +1,163 @@
+.gov-profile-modal {
+
+  /* Modal width control */
+
+  .gov-profile-dialog {
+    max-width: 95%;
+    margin: 1rem auto;
+  }
+
+  /* Header */
+
+  .gov-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    background: #f2f2f2;
+    border-bottom: 1px solid #ddd;
+    flex-wrap: wrap;
+  }
+
+  .gov-logo {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+  }
+
+  .gov-title {
+
+    h5 {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 700;
+      color: #c61d23;
+      letter-spacing: 0.5px;
+    }
+
+    span {
+      font-size: 10px;
+      letter-spacing: 1px;
+      color: #0f6a3a;
+      font-weight: 600;
+    }
+  }
+
+  /* Profile header */
+
+  .profile-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 8px;
+  }
+
+  .profile-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #b74929;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .profile-info h5 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .role-badge {
+    margin-top: 4px;
+    font-size: 11px;
+  }
+
+  /* Profile fields */
+
+  .profile-details {
+
+    label {
+      font-size: 11px;
+      color: #6c757d;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+
+    div {
+      font-weight: 500;
+      font-size: 14px;
+      margin-bottom: 10px;
+      word-break: break-word;
+    }
+  }
+
+  .gov-btn {
+    background: #b74929;
+    border: none;
+    font-size: 14px;
+
+    &:hover {
+      background: #983c22;
+    }
+  }
+
+}
+
+
+/* Tablet */
+
+@media (min-width: 576px) {
+
+  .gov-profile-modal {
+
+    .gov-logo {
+      width: 50px;
+      height: 50px;
+    }
+
+    .profile-avatar {
+      width: 55px;
+      height: 55px;
+      font-size: 20px;
+    }
+
+    .gov-title h5 {
+      font-size: 17px;
+    }
+
+    .gov-title span {
+      font-size: 11px;
+    }
+
+  }
+
+}
+
+
+/* Desktop */
+
+@media (min-width: 768px) {
+
+  .gov-profile-modal {
+
+    .gov-profile-dialog {
+      max-width: 520px;
+    }
+
+    .profile-avatar {
+      width: 60px;
+      height: 60px;
+      font-size: 22px;
+    }
+
+    .gov-title h5 {
+      font-size: 18px;
+    }
+
+  }
+
+}

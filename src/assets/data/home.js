@@ -113,45 +113,45 @@ export const courses = [
     {
         title: "Basic First Aid Training",
         desc: "Learn essential first aid skills including wound care, bandaging and emergency response techniques.",
-        price: "₹3500",
-        oldPrice: "₹5000",
+        price: "₹2000",
+        oldPrice: "₹3500",
         img: IMAGES.FIRSTAID,
     },
     {
         title: "CPR & AED Certification",
         desc: "Comprehensive CPR training with AED usage. Get certified in life-saving techniques.",
-        price: "₹4500",
-        oldPrice: "₹6000",
+        price: "₹3000",
+        oldPrice: "₹4500",
         img: IMAGES.CPR,
     },
     {
-        title: "Pediatric First Aid",
-        desc: "Specialized first aid training for infants and children.",
-        price: "₹4000",
-        oldPrice: "₹5500",
+        title: "Advanced Life Support (ALS)",
+        desc: "Advanced life support training for healthcare professionals and emergency responders.",
+        price: "₹12000",
+        oldPrice: "₹15000",
         img: IMAGES.AMBULANCE,
     },
     {
-        title: "Advanced First Aid",
-        desc: "Advanced techniques for handling complex medical emergencies.",
-        price: "₹6000",
-        oldPrice: "₹8000",
+        title: "Pediatric First Aid",
+        desc: "Specialized first aid training for handling medical emergencies involving children and infants.",
+        price: "₹4000",
+        oldPrice: "₹6000",
         img: IMAGES.AED,
     },
     {
         title: "Workplace Safety & First Aid",
-        desc: "Industrial first aid training for workplace emergencies.",
-        price: "₹5500",
-        oldPrice: "₹7000",
+        desc: "Workplace-specific first aid training for corporate employees and safety officers.",
+        price: "₹1800",
+        oldPrice: "₹3000",
         img: IMAGES.SAFTYfIRST
     },
     {
         title: "Emergency Response Training",
-        desc: "Learn disaster preparedness and emergency response protocols.",
-        price: "₹6000",
-        oldPrice: "₹7500",
+        desc: "Comprehensive emergency response training for disaster preparedness and crisis management.",
+        price: "₹7000",
+        oldPrice: "₹8500",
         img: IMAGES.EMR_RESP
-    },
+    }
 ];
 
 export const JOURNEY_STEPS = [

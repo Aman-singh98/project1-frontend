@@ -23,23 +23,6 @@ export const deleteInternship = (id) => {
 /* ================================
    APPLY INTERNSHIP (PUBLIC)
 ================================ */
-// export const applyInternship = (formData) => {
-// 	console.log(formData, 'formData');
-// 	return axiosInstance.post("/internship", formData, {
-// 		headers: {
-// 			"Content-Type": "multipart/form-data"
-// 		}
-// 	});
-// };
-
 export const applyInternship = (formData) => {
-	// return axiosInstance.post("/internship/apply", formData);
-	try {
-		const response = axiosInstance.post("/internship/apply", formData);
-
-		console.log(response.data, "response data");
-	} catch (error) {
-		console.log("Full Error:", error);
-		console.log("Server Error:", error.response?.data);
-	}
+	return axiosInstance.post("/internship/apply", formData);
 };

@@ -3,6 +3,7 @@
  */
 import Image from "react-bootstrap/Image";
 import { IMAGES } from "../../../constants/images";
+import IndianFlag from "../../global/IndianFlag";
 
 const PARTNER_LOGOS = [
 	{ src: IMAGES.KOSHAL, alt: "Skill India Mission" },
@@ -33,16 +34,7 @@ function BrandingBar() {
 						</p>
 					</div>
 				</div>
-				<div className="branding-bar__flag text-center my-2 my-md-0">
-					<div className="branding-flag">
-						<Image
-							src={IMAGES.INDIAN_FLAG}
-							alt="Indian national flag"
-							className="branding-flag__img"
-							fluid
-						/>
-					</div>
-				</div>
+				<IndianFlag />
 				<div className="branding-bar__partners d-flex justify-content-center justify-content-md-end flex-wrap gap-2 gap-md-3">
 					{PARTNER_LOGOS?.map((logo) => (
 						<Image

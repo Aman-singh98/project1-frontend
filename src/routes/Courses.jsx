@@ -1,7 +1,7 @@
 /**
  * Courses
  * Mobile-first, responsive, with search + filters + pagination
- * ! add loader if wait for the api response.
+ * ! Add loader if wait for the api response.
  */
 import { useEffect, useMemo, useCallback, useState } from "react";
 import { Container, Row, Col, Card, Form, Button, Pagination } from "react-bootstrap";
@@ -9,7 +9,7 @@ import { useTranslation } from "react-i18next";
 import { IMAGES } from "../constants/images";
 import axiosInstance from "../api/axiosInstance";
 import HeroSection from "../components/global/HeroSection";
-import { COURSES_PER_PAGE, SEED_COURSES, MODES, PRICE_RANGES } from "../assets/data/courses";
+import { SEED_COURSES, COURSES_PER_PAGE, MODES, PRICE_RANGES } from "../assets/data/courses";
 
 function Courses() {
 	const { t } = useTranslation();
@@ -24,7 +24,7 @@ function Courses() {
 		try {
 			const res = await axiosInstance.get("/courses");
 			const apiCourses = Array.isArray(res.data) ? res.data : res.data?.data ?? [];
-			setCourses([...SEED_COURSES, ...apiCourses]);
+			setCourses(apiCourses);
 		} catch {
 			setCourses(SEED_COURSES);
 		}

@@ -44,9 +44,9 @@ function MainNavbar() {
 				<Nav.Link as={NavLink} to={ROUTERS.FAQ}>
 					{t("header.navbar.faqs")}
 				</Nav.Link>
-				<Nav.Link as={NavLink} to={ROUTERS.Blogs}>
+				{/* <Nav.Link as={NavLink} to={ROUTERS.Blogs}>
 					{t("header.navbar.blogs")}
-				</Nav.Link>
+				</Nav.Link> */}
 			</Nav>
 		</div>
 	);

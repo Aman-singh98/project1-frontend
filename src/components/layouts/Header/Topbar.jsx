@@ -13,6 +13,7 @@ import ForgotPasswordModal from "../../global/popups/ForgotPasswordModal";
 // API calling for login
 import axiosInstance from "../../../api/axiosInstance";
 import ProfileDropdown from "../../global/ProfileDropdown";
+import ProfileModal from "../../global/popups/ProfilePopup";
 
 function TopBar() {
 	const { t, i18n } = useTranslation();
@@ -20,6 +21,7 @@ function TopBar() {
 	const [showRegister, setShowRegister] = useState(false);
 	const [verification, setVerification] = useState(false);
 	const [showForgot, setShowForgot] = useState(false);
+	const [showProfile, setShowProfile] = useState(false);
 	const [user, setUser] = useState(null);
 	const [loading, setLoading] = useState(true);
 
@@ -127,7 +129,7 @@ function TopBar() {
 											variant="secondary"
 											size="sm"
 											id="language-switcher"
-											className="d-inline-flex align-items-center gap-1"
+											className="d-inline-flex align-items-center gap-1 no-caret"
 										>
 											<i className="bi bi-globe" />
 											<span className="d-none d-sm-inline">
@@ -156,17 +158,17 @@ function TopBar() {
 										</Dropdown.Menu>
 									</Dropdown>
 								</OverlayTrigger>
-								{loading ? null : !user ? (
-									<Button
-										variant="light"
-										size="sm"
-										onClick={openLoginPopup}
-									>
+								{loading ? null : user ? (
+									<ProfileDropdown
+										user={user}
+										handleLogout={handleLogout}
+										setShowProfile={setShowProfile}
+									/>
+								) : (
+									<Button variant="light" size="sm" onClick={openLoginPopup}>
 										<i className="bi bi-person-circle me-1" />
 										{t("header.topbar.login")}
 									</Button>
-								) : (
-									<ProfileDropdown user={user} handleLogout={handleLogout} />
 								)}
 							</div>
 						</Col>
@@ -202,6 +204,11 @@ function TopBar() {
 					setVerification(false);
 					// setUserMobile(mobile);
 				}}
+			/>
+			<ProfileModal
+				show={showProfile}
+				onHide={() => setShowProfile(false)}
+				user={user}
 			/>
 		</>
 	);
