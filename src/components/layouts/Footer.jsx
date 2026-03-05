@@ -10,8 +10,35 @@ import { FacebookLink, InstagramLink, LinkedinLink, NoshCompanyLink, TwitterLink
 import { ROUTERS } from "../../constants/router";
 import ContinuousFooterSlider from "../global/ContinuousFooterSlider";
 import { quickLinks, popularCourses } from "../../assets/data/footer";
+import { useState } from "react";
+import axiosInstance from "../../api/axiosInstance";
 
 function Footer() {
+	// States
+	const [email, setEmail] = useState("");
+	const [loading, setLoading] = useState(false);
+
+	const handleSubscribe = async (e) => {
+		e.preventDefault();
+
+		if (!email) {
+			alert("Please enter your email");
+			return;
+		}
+		try {
+			setLoading(true);
+			const res = await axiosInstance.post("/subscribe", {
+				email
+			});
+			alert(res.data.message);
+			setEmail("");
+		} catch (error) {
+			alert(error?.response?.data?.message || "Something went wrong");
+		} finally {
+			setLoading(false);
+		}
+	};
+
 	return (
 		<>
 			<div className="footer-partner-wrapper">
@@ -95,10 +122,17 @@ function Footer() {
 							<p className="footer-text">
 								Subscribe to get the latest updates on first-aid courses, resources, and events.
 							</p>
-							<Form className="mb-3">
-								<Form.Control type="email" placeholder="Enter your email" className="footer-input mb-2" />
-								<Button className="btn-orange w-100">
-									Subscribe
+							<Form className="mb-3" onSubmit={handleSubscribe}>
+								<Form.Control
+									type="email"
+									placeholder="Enter your email"
+									className="footer-input mb-2"
+									value={email}
+									onChange={(e) => setEmail(e.target.value)}
+									required
+								/>
+								<Button type="submit" className="btn-orange w-100" disabled={loading}>
+									{loading ? "Subscribing..." : "Subscribe"}
 								</Button>
 							</Form>
 							<div className="social-container">

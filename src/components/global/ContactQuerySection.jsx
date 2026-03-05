@@ -5,20 +5,21 @@
 import { useState } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { INDIA_STATE_DISTRICTS } from "../../assets/data/faq";
+import axiosInstance from "../../api/axiosInstance";
 
 const STATE_OPTIONS = Object.keys(INDIA_STATE_DISTRICTS);
 
 // Feedback type options
 const FEEDBACK_TYPES = ["Suggestion", "Complaints", "Query", "Others"];
 const formDefaultData = {
-        name: "",
-        mobile: "",
-        email: "",
-        state: "",
-        district: "",
-        feedbackType: "",
-        message: "",
-    };
+    name: "",
+    mobile: "",
+    email: "",
+    state: "",
+    district: "",
+    feedbackType: "",
+    message: "",
+};
 
 function ContactQuerySection() {
     const [formData, setFormData] = useState(formDefaultData);
@@ -34,11 +35,24 @@ function ContactQuerySection() {
         });
     };
 
-    function handleSubmit(e) {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // TODO: Replace with real API call
-        console.log("Submit query payload:", formData);
-    }
+        try {
+            const res = await axiosInstance.post("/query", formData);
+            alert(res.data.message);
+            setFormData({
+                name: "",
+                email: "",
+                mobile: "",
+                state: "",
+                district: "",
+                feedbackType: "",
+                message: ""
+            });
+        } catch (error) {
+            alert(error?.response?.data?.message || "Error");
+        }
+    };
 
     const districtOptions =
         formData.state && INDIA_STATE_DISTRICTS[formData.state]
