@@ -9,7 +9,7 @@ const TrainingGallery = () => {
     return (
         <section className="bg-white training-programs">
             <Container>
-                <div className="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center">
+                <div className="mb-3 mb-md-0 d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center">
                     <div className="section-header">
                         <h2>First Aid Training Programs</h2>
                         <p>Take a glimpse at our training sessions and facilities</p>

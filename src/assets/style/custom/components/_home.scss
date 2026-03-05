@@ -118,14 +118,22 @@
 @media (max-width: 767.98px) {
   .home-hero__stats {
     --stats-bar-height: auto;
-    flex-direction: column;
-    align-items: stretch;
-    bottom: -3.5rem;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+
+    bottom: -3.3rem;
     height: auto;
+    padding: 1rem 1.2rem;
+  }
+
+  .home-hero-stat {
+    justify-content: flex-start;
   }
 
   .home-hero {
-    padding-bottom: 7rem;
+    padding-bottom: 8rem;
   }
 }
 
@@ -379,6 +387,16 @@
   color: #14b8a6;
 }
 
+@media (max-width: 575px) {
+  .service-card .card-title {
+    font-size: 12px;
+  }
+
+  .service-card .card-text {
+    font-size: 10px;
+  }
+}
+
 /* ==============  2. First add section css ============== */
 .program-section {
   padding: 20px 0;
@@ -514,126 +532,108 @@
 
 /* ============== 3. Journey to Certification ============== */
 
-.home-journey {
-  padding: 20px 0;
+/* Section */
+
+.journey-section {
+  padding: 30px 0;
   background: linear-gradient(90deg,
-      #ffe2d2 0%,
-      #fff6e7 45%,
-      #dff6ee 100%);
-  border-bottom: 1px solid green;
+      #f7d5c4 0%,
+      #cfe3d5 100%);
 }
 
-.home-journey__steps {
-  display: grid;
-  gap: 1.5rem;
+/* Title */
+
+.journey-title {
+  font-weight: 600;
+  margin-bottom: 5px;
 }
 
-@media (min-width: 768px) {
-  .home-journey__steps {
-    display: flex;
-    justify-content: space-between;
-    gap: 1.25rem;
-  }
+/* Subtitle */
+
+.journey-subtitle {
+  color: #6c757d;
+  margin-bottom: 40px;
+  font-size: 14px;
 }
 
-.home-journey-step {
+/* Steps container */
+
+.journey-steps {
   position: relative;
+}
+
+/* Orange progress line */
+
+.journey-line {
+  position: absolute;
+  top: 30px;
+  left: 15%;
+  right: 15%;
+  height: 6px;
+  background: #ff7a00;
+  z-index: 0;
+}
+
+/* Step column */
+
+.step-col {
+  position: relative;
+  z-index: 2;
+}
+
+/* Step icon */
+
+.step-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #fff;
+  border: 4px solid #e9ecef;
   display: flex;
-  align-items: flex-start;
-  gap: 0.9rem;
-}
-
-@media (min-width: 768px) {
-  .home-journey-step {
-    flex: 1;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-}
-
-/* Connecting line between steps on larger screens */
-@media (min-width: 768px) {
-  .home-journey-step::after {
-    content: "";
-    position: absolute;
-    top: 32px;
-    right: -50%;
-    width: 87%;
-    height: 3px;
-    background: linear-gradient(90deg, #f97316, #16a34a);
-    opacity: 0.6;
-  }
-
-  .home-journey-step--last::after {
-    content: none;
-  }
-}
-
-.home-journey-step__icon-wrapper {
-  flex-shrink: 0;
-}
-
-.home-journey-step__icon {
-  width: 56px;
-  height: 56px;
-  border-radius: 999px;
-  display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: radial-gradient(circle at 30% 20%, #ffffff, #f97316);
-  box-shadow: 0 8px 18px rgba(249, 115, 22, 0.4);
-  color: #ffffff;
-  font-size: 1.5rem;
+  margin: auto;
+  font-size: 22px;
+  color: #ff7a00;
+  margin-bottom: 10px;
 }
 
-.home-journey-step__content {
-  margin-top: 0.2rem;
-}
+/* Step label */
 
-@media (min-width: 768px) {
-  .home-journey-step__content {
-    margin-top: 0.75rem;
-  }
-}
-
-.home-journey-step__step-label {
-  display: inline-block;
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #6b7280;
-  margin-bottom: 0.1rem;
-}
-
-.home-journey-step__title {
-  font-size: 1rem;
+.step-label {
+  font-size: 11px;
   font-weight: 600;
-  color: #111827;
-  margin-bottom: 0.15rem;
+  color: #ff7a00;
+  margin-bottom: 3px;
 }
 
-.home-journey-step__description {
-  font-size: 0.85rem;
-  color: #4b5563;
-  margin: 0;
+/* Step title */
+
+.step-title {
+  font-weight: 600;
+  margin-bottom: 4px;
 }
 
-/* ============== Shared header row (title + View All) ============== */
+/* Step description */
 
-.home-section-header-row {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  align-items: flex-start;
-  justify-content: space-between;
+.step-desc {
+  font-size: 13px;
+  color: #6c757d;
+  line-height: 1.4;
 }
 
-@media (min-width: 768px) {
-  .home-section-header-row {
-    flex-direction: row;
-    align-items: center;
+/* Mobile responsive */
+
+@media (max-width: 768px) {
+
+  .journey-line {
+    display: none;
   }
+
+  .step-icon {
+    margin-top: 20px;
+  }
+
 }
 
 

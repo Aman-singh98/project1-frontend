@@ -11,7 +11,7 @@ function FirstAidPrograms() {
     return (
         <section className="program-section">
             <Container>
-                <div className="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center">
+                <div className="mb-3 mb-md-0 d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center">
                     <div className="section-header">
                         <h2 className="text-orange">First Aid Training Programs</h2>
                         <p>

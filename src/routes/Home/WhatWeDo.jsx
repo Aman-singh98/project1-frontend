@@ -14,7 +14,7 @@ function WhatWeDo() {
         </div>
         <Row className="g-4">
           {services.map((item, index) => (
-            <Col xs={12} sm={6} lg={4} key={index}>
+            <Col xs={6} md={6} lg={4} key={index}>
               <Card className={`service-card ${item.bg}`}>
                 <div className="top-border"></div>
                 <Card.Body>
