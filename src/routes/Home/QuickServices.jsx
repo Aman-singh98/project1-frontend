@@ -1,5 +1,8 @@
 import { NavLink } from "react-router-dom";
 import { Container, Row, Col, Card, Badge } from "react-bootstrap";
+import QueryCard from "../../components/global/QueryCard";
+import FAQAccordion from "../../components/global/FAQAccordion";
+
 
 const services = [
 	{
@@ -115,6 +118,16 @@ function QuickServices() {
 								<i className="bi bi-chevron-right ms-auto" />
 							</NavLink>
 						))}
+					</Col>
+				</Row>
+			</Container>
+			<Container style={{ padding: "10px 0" }}>
+				<Row>
+					<Col xs={12} lg={5}>
+						<FAQAccordion />
+					</Col>
+					<Col xs={12} lg={7}>
+						<QueryCard title="Have a question? Contact us directly!" />
 					</Col>
 				</Row>
 			</Container>

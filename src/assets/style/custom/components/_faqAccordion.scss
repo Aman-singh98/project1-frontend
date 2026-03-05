@@ -1,0 +1,83 @@
+/* Section */
+.faq-section {
+    padding: 40px 10px;
+}
+
+/* Accordion item */
+.accordion-item {
+    border: 1px solid #e6e6e6;
+    border-radius: 10px !important;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+/* Header */
+.accordion-button {
+    font-size: 13px;
+    font-weight: 500;
+    padding: 13px;
+    background: #fff;
+    box-shadow: none !important;
+    border-radius: 10px !important;
+}
+
+/* Remove blue focus */
+.accordion-button:focus {
+    box-shadow: none;
+}
+
+/* When open */
+.accordion-button:not(.collapsed) {
+    background: #fff;
+    color: #333;
+}
+
+/* Question text */
+.faq-question {
+    font-size: 13px;
+    line-height: 1.1;
+}
+
+/* Answer */
+.faq-answer {
+    font-size: 12px;
+    line-height: 1.6;
+    color: #6c757d;
+    margin-bottom: 0;
+}
+
+/* Accordion icon */
+.accordion-button::after {
+    transform: scale(0.5) rotate(0deg);
+}
+
+/* When accordion is open */
+.accordion-button:not(.collapsed)::after {
+    transform: scale(0.5) rotate(180deg);
+}
+
+/* Mobile optimization */
+@media (max-width: 768px) {
+
+    .accordion-button {
+        font-size: 14px;
+        padding: 12px 14px;
+    }
+
+    .faq-answer {
+        font-size: 11px;
+    }
+
+}
+
+.faq-section-title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #f15a24;
+}
+
+.faq-section-subtitle {
+    font-size: 12px;
+    display: block;
+    margin-bottom: 10px;
+}
