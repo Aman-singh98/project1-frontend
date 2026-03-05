@@ -3,25 +3,25 @@
 .gov-navbar {
   background-color: #e5e5e5;
   border-top: 1px solid #2e7d32;
-  /* thin green line */
   border-bottom: 1px solid #2e7d32;
 }
 
 .gov-navbar .nav {
-  margin-left: 16px;
+  justify-content: center;
+  width: 100%;
 }
 
 .gov-navbar .nav-link {
   color: #333 !important;
-  font-size: 14px;
+  font-size: 16px;
   border-right: 1px solid #2e7d32;
   background-color: #e5e5e5;
   font-weight: 500;
+  border-radius: 0 !important;
 }
 
-/* Remove rounded feel */
-.gov-navbar .nav-link {
-  border-radius: 0 !important;
+.gov-navbar .nav-link:last-child {
+  border-right: none;
 }
 
 /* Hover (very subtle) */

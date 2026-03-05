@@ -18,7 +18,6 @@ import Vision from "../routes/Vision";
 import Courses from "../routes/Courses";
 import Gallery from "../routes/Gallery";
 import FAQ from "../routes/Faq";
-import Blogs from "../routes/Blogs";
 import Ambulance from "../routes/Ambulance";
 import Internship from "../routes/Internship";
 import FirstAddKit from "../routes/FirstAddKit";
@@ -36,7 +35,6 @@ export const ROUTERS = {
     Courses: 'courses',
     Gallery: 'gallery',
     FAQ: 'faq',
-    Blogs: 'blogs',
     Ambulance: 'ambulance',
     Internship: 'internship',
     FirstAddKit: 'first-add-kit',
@@ -57,7 +55,6 @@ export const router = createBrowserRouter([
             { path: ROUTERS.Courses, element: <Courses /> },
             { path: ROUTERS.Gallery, element: <Gallery /> },
             { path: ROUTERS.FAQ, element: <FAQ /> },
-            { path: ROUTERS.Blogs, element: <Blogs /> },
             { path: ROUTERS.Ambulance, element: <Ambulance /> },
             { path: ROUTERS.Internship, element: <Internship /> },
             { path: ROUTERS.FirstAddKit, element: <FirstAddKit /> },

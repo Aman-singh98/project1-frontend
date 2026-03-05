@@ -10,6 +10,7 @@ import TrainingAction from "./TrainingAction";
 import KeyHighlights from "./KeyHighlights";
 import HomeHeroCarousel from "./HomeHeroCarousel";
 import { JOURNEY_STEPS } from "../../assets/data/home";
+import QuickServices from "./QuickServices";
 
 /* ================= JOURNEY TO CERTIFICATION ================= */
 
@@ -71,6 +72,7 @@ function Home() {
 			<Leadership />
 			<KeyHighlights />
 			<TrainingAction />
+			<QuickServices />
 		</main>
 	);
 }
