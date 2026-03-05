@@ -3,6 +3,7 @@
  */
 import { useEffect, useState } from "react";
 import { Card, Row, Col, Form, Button, Table, Spinner, Image } from "react-bootstrap";
+import { useTranslation } from "react-i18next";
 import { createKit, getAdminKits, deleteKit } from "../../../services/kitService";
 import { ROUTERS } from "../../../constants/router";
 import { Navigate } from "react-router-dom";
@@ -21,6 +22,7 @@ function KitManagement() {
 	const [loading, setLoading] = useState(false);
 	const [tableLoading, setTableLoading] = useState(true);
 	const [formData, setFormData] = useState(defaultValues);
+	const { t } = useTranslation();
 
 	// ================= FETCH KITS =================
 	const fetchKits = async () => {
@@ -76,7 +78,7 @@ function KitManagement() {
 
 	// ================= DELETE KIT =================
 	const handleDeleteKit = async (id) => {
-		if (!window.confirm("Delete this kit?")) return;
+		if (!window.confirm(t("admin.kits.confirmDelete"))) return;
 		try {
 			await deleteKit(id);
 			await fetchKits();
@@ -87,38 +89,38 @@ function KitManagement() {
 
 	return (
 		<>
-			<h4 className="mb-4 fw-bold">Kit Management</h4>
+			<h4 className="mb-4 fw-bold">{t("admin.kits.title")}</h4>
 			<Card className="mb-4 shadow-sm">
 				<Card.Body>
-					<h5 className="mb-4">Add New Kit</h5>
+					<h5 className="mb-4">{t("admin.kits.addTitle")}</h5>
 					<Form onSubmit={handleSubmit}>
 						<Row className="g-3">
 							<Col xs={12} md={6}>
 								<Form.Group>
-									<Form.Label>Title</Form.Label>
+									<Form.Label>{t("admin.kits.form.title")}</Form.Label>
 									<Form.Control
 										name="title"
 										value={formData.title}
 										onChange={handleChange}
-										placeholder="Kit Title"
+										placeholder={t("admin.kits.form.titlePlaceholder")}
 										required
 									/>
 								</Form.Group>
 							</Col>
 							<Col xs={12} md={6}>
 								<Form.Group>
-									<Form.Label>Description</Form.Label>
+									<Form.Label>{t("admin.kits.form.description")}</Form.Label>
 									<Form.Control
 										name="description"
 										value={formData.description}
 										onChange={handleChange}
-										placeholder="Kit Description"
+										placeholder={t("admin.kits.form.descriptionPlaceholder")}
 									/>
 								</Form.Group>
 							</Col>
 							<Col xs={12} md={6}>
 								<Form.Group>
-									<Form.Label>Old Price</Form.Label>
+									<Form.Label>{t("admin.kits.form.oldPrice")}</Form.Label>
 									<Form.Control
 										type="number"
 										name="oldPrice"
@@ -130,7 +132,7 @@ function KitManagement() {
 							</Col>
 							<Col xs={12} md={6}>
 								<Form.Group>
-									<Form.Label>New Price</Form.Label>
+									<Form.Label>{t("admin.kits.form.newPrice")}</Form.Label>
 									<Form.Control
 										type="number"
 										name="newPrice"
@@ -142,7 +144,7 @@ function KitManagement() {
 							</Col>
 							<Col xs={12} md={6}>
 								<Form.Group>
-									<Form.Label>Kit Image</Form.Label>
+									<Form.Label>{t("admin.kits.form.image")}</Form.Label>
 									<Form.Control type="file" onChange={handleFileChange} required />
 								</Form.Group>
 							</Col>
@@ -151,10 +153,10 @@ function KitManagement() {
 									{loading ? (
 										<>
 											<Spinner size="sm" animation="border" className="me-2" />
-											Saving...
+											{t("admin.common.saving")}
 										</>
 									) : (
-										"Add Kit"
+										t("admin.kits.buttons.add")
 									)}
 								</Button>
 							</Col>
@@ -164,25 +166,25 @@ function KitManagement() {
 			</Card>
 			<Card className="shadow-sm">
 				<Card.Body>
-					<h5 className="mb-4">All Kits</h5>
+					<h5 className="mb-4">{t("admin.kits.listTitle")}</h5>
 					{tableLoading ? (
 						<div className="text-center py-5">
 							<Spinner animation="border" />
 						</div>
 					) : kits.length === 0 ? (
 						<div className="text-center text-muted py-4">
-							No kits available
+							{t("admin.kits.empty")}
 						</div>
 					) : (
 						<Table bordered hover responsive className="align-middle">
 							<thead>
 								<tr>
-									<th>Image</th>
-									<th>Title</th>
-									<th>Description</th>
-									<th>Price</th>
-									<th>Status</th>
-									<th>Action</th>
+									<th>{t("admin.kits.table.image")}</th>
+									<th>{t("admin.kits.table.title")}</th>
+									<th>{t("admin.kits.table.description")}</th>
+									<th>{t("admin.kits.table.price")}</th>
+									<th>{t("admin.kits.table.status")}</th>
+									<th>{t("admin.kits.table.action")}</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -198,7 +200,7 @@ function KitManagement() {
 										<td>₹{kit.newPrice}</td>
 										<td>
 											<span className={kit.isActive ? "text-success" : "text-muted"}>
-												{kit.isActive ? "Active" : "Inactive"}
+												{kit.isActive ? t("admin.common.active") : t("admin.common.inactive")}
 											</span>
 										</td>
 										<td>
@@ -208,7 +210,7 @@ function KitManagement() {
 												disabled={kits.length <= 4}
 												onClick={() => handleDeleteKit(kit._id)}
 											>
-												Delete
+												{t("admin.actions.delete")}
 											</Button>
 										</td>
 									</tr>

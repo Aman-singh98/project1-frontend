@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { Container, Table, Button, Spinner } from "react-bootstrap";
 import axiosInstance from "../../../api/axiosInstance";
+import { useTranslation } from "react-i18next";
 
 const Subscribers = () => {
+	const { t } = useTranslation();
 	const [subscribers, setSubscribers] = useState([]);
 	const [loading, setLoading] = useState(true);
 
-	// Fetch subscribers
 	const fetchSubscribers = async () => {
 		try {
 			const res = await axiosInstance.get("/admin/subscribers");
@@ -22,9 +23,8 @@ const Subscribers = () => {
 		fetchSubscribers();
 	}, []);
 
-	// Delete subscriber
 	const handleDelete = async (id) => {
-		if (!window.confirm("Delete this subscriber?")) return;
+		if (!window.confirm(t("admin.subscribers.confirmDelete"))) return;
 		try {
 			await axiosInstance.delete(`/admin/subscribers/${id}`);
 			setSubscribers((prev) =>
@@ -37,7 +37,7 @@ const Subscribers = () => {
 
 	return (
 		<Container className="py-4">
-			<h3 className="mb-4 fw-bold">Newsletter Subscribers</h3>
+			<h3 className="mb-4 fw-bold">{t("admin.subscribers.title")}</h3>
 			{loading ? (
 				<div className="text-center">
 					<Spinner animation="border" />
@@ -46,17 +46,17 @@ const Subscribers = () => {
 				<Table striped bordered hover responsive>
 					<thead>
 						<tr>
-							<th>#</th>
-							<th>Email</th>
-							<th>Subscribed Date</th>
-							<th>Action</th>
+							<th>{t("admin.subscribers.table.index")}</th>
+							<th>{t("admin.subscribers.table.email")}</th>
+							<th>{t("admin.subscribers.table.subscribedDate")}</th>
+							<th>{t("admin.subscribers.table.action")}</th>
 						</tr>
 					</thead>
 					<tbody>
 						{subscribers.length === 0 ? (
 							<tr>
 								<td colSpan="4" className="text-center">
-									No subscribers found
+									{t("admin.subscribers.empty")}
 								</td>
 							</tr>
 						) : (
@@ -73,7 +73,7 @@ const Subscribers = () => {
 											size="sm"
 											onClick={() => handleDelete(item._id)}
 										>
-											Delete
+											{t("admin.actions.delete")}
 										</Button>
 									</td>
 								</tr>

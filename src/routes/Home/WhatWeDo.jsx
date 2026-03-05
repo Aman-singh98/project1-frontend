@@ -1,16 +1,16 @@
 import { Container, Row, Col, Card } from "react-bootstrap";
+import { useTranslation } from "react-i18next";
 import { services } from "../../assets/data/home";
 
 function WhatWeDo() {
+  const { t } = useTranslation();
+
   return (
     <section className="what-section">
       <Container>
         <div className="section-header">
-          <h2>What We Do</h2>
-          <p>
-            Empowering individuals and organizations with life-saving skills
-            through comprehensive training programs
-          </p>
+          <h2>{t("home.whatWeDo.title")}</h2>
+          <p>{t("home.whatWeDo.subtitle")}</p>
         </div>
         <Row className="g-4">
           {services.map((item, index) => (

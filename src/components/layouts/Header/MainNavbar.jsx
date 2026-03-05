@@ -28,7 +28,7 @@ function MainNavbar() {
 					{t("header.navbar.courses")}
 				</Nav.Link>
 				<Nav.Link as={NavLink} to={ROUTERS.Internship}>
-					Internship
+					{t("header.topbar.internship")}
 				</Nav.Link>
 				<Nav.Link as={NavLink} to={ROUTERS.Gallery}>
 					{t("header.navbar.gallery")}

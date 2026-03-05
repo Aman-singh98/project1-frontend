@@ -1,18 +1,21 @@
 import { useEffect, useState } from "react";
 import { Button, Card, Table, Badge, Spinner } from "react-bootstrap";
+import { useTranslation } from "react-i18next";
 import {
-	getInternships, updateInternshipStatus, deleteInternship, getInternshipById
+	getInternships,
+	updateInternshipStatus,
+	deleteInternship,
+	getInternshipById,
 } from "../../../services/internshipService";
 import InternshipDetailsModal from "../../../components/global/popups/InternshipDetailsModal";
 
 function InternshipManagement() {
-	// States
+	const { t } = useTranslation();
 	const [internships, setInternships] = useState([]);
 	const [selectedInternship, setSelectedInternship] = useState(null);
 	const [showModal, setShowModal] = useState(false);
 	const [tableLoading, setTableLoading] = useState(true);
 
-	// ================= FETCH INTERNSHIPS =================
 	const fetchInternships = async () => {
 		try {
 			setTableLoading(true);
@@ -20,7 +23,7 @@ function InternshipManagement() {
 			setInternships(res.data.data);
 		} catch (error) {
 			console.error("Fetch Internship Error:", error);
-		}finally {
+		} finally {
 			setTableLoading(false);
 		}
 	};
@@ -29,14 +32,13 @@ function InternshipManagement() {
 		fetchInternships();
 	}, []);
 
-	// ================= INTERNSHIP ACTIONS =================
 	const handleStatusUpdate = async (id, status) => {
 		await updateInternshipStatus(id, { status });
 		fetchInternships();
 	};
 
 	const handleDeleteInternship = async (id) => {
-		if (!window.confirm("Delete this internship?")) return;
+		if (!window.confirm(t("admin.internships.confirmDelete"))) return;
 		await deleteInternship(id);
 		fetchInternships();
 	};
@@ -47,10 +49,11 @@ function InternshipManagement() {
 		setShowModal(true);
 	};
 
-
 	return (
 		<>
-			<h4 className="mb-3 text-center">Internship Applications</h4>
+			<h4 className="mb-3 text-center">
+				{t("admin.internships.title")}
+			</h4>
 			<Card>
 				<Card.Body>
 					{tableLoading ? (
@@ -61,12 +64,12 @@ function InternshipManagement() {
 						<Table bordered hover responsive>
 							<thead>
 								<tr>
-									<th>Name</th>
-									<th>Email</th>
-									<th>Area</th>
-									<th>Duration</th>
-									<th>Status</th>
-									<th>Actions</th>
+									<th>{t("admin.internships.table.name")}</th>
+									<th>{t("admin.internships.table.email")}</th>
+									<th>{t("admin.internships.table.area")}</th>
+									<th>{t("admin.internships.table.duration")}</th>
+									<th>{t("admin.internships.table.status")}</th>
+									<th>{t("admin.internships.table.actions")}</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -82,8 +85,8 @@ function InternshipManagement() {
 													item.status === "approved"
 														? "success"
 														: item.status === "rejected"
-															? "danger"
-															: "warning"
+														? "danger"
+														: "warning"
 												}
 											>
 												{item.status}
@@ -93,30 +96,46 @@ function InternshipManagement() {
 											<Button
 												size="sm"
 												variant="info"
-												onClick={() => handleViewDetails(item._id)}
+												onClick={() =>
+													handleViewDetails(item._id)
+												}
 											>
-												View
+												{t("admin.actions.view")}
 											</Button>{" "}
 											<Button
 												size="sm"
 												variant="success"
-												onClick={() => handleStatusUpdate(item._id, "approved")}
+												onClick={() =>
+													handleStatusUpdate(
+														item._id,
+														"approved"
+													)
+												}
 											>
-												Approve
+												{t("admin.actions.approve")}
 											</Button>{" "}
 											<Button
 												size="sm"
 												variant="warning"
-												onClick={() => handleStatusUpdate(item._id, "rejected")}
+												onClick={() =>
+													handleStatusUpdate(
+														item._id,
+														"rejected"
+													)
+												}
 											>
-												Reject
+												{t("admin.actions.reject")}
 											</Button>{" "}
 											<Button
 												size="sm"
 												variant="danger"
-												onClick={() => handleDeleteInternship(item._id)}
+												onClick={() =>
+													handleDeleteInternship(
+														item._id
+													)
+												}
 											>
-												Delete
+												{t("admin.actions.delete")}
 											</Button>
 										</td>
 									</tr>
@@ -133,7 +152,6 @@ function InternshipManagement() {
 			/>
 		</>
 	);
-
 }
 
 export default InternshipManagement;

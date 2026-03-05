@@ -3,7 +3,7 @@ import { IMAGES } from "../../constants/images";
 /** Change this to increase/decrease cards per page */
 export const COURSES_PER_PAGE = 4;
 
-/** Seed / fallback courses (keeps page working if API fails) */
+/** Seed fallback courses (keeps page working if API fails) */
 export const SEED_COURSES = [
 	{
 		id: 1,

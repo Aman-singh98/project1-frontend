@@ -1,13 +1,16 @@
 import { Container, Row, Col } from "react-bootstrap";
+import { useTranslation } from "react-i18next";
 import { leaders } from "../../assets/data/home";
 
 function Leadership() {
+	const { t } = useTranslation();
+
 	return (
 		<section className="leadership-section">
 			<Container>
 				<div className="section-header">
-					<h2>Our Leadership</h2>
-					<p>Meet the team that makes our training programs possible.</p>
+					<h2>{t("home.leadership.title")}</h2>
+					<p>{t("home.leadership.subtitle")}</p>
 				</div>
 				<Row className="g-4">
 					{leaders?.map((item, index) => (

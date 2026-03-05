@@ -1,14 +1,12 @@
 .gov-profile-modal {
 
   /* Modal width control */
-
   .gov-profile-dialog {
     max-width: 95%;
     margin: 1rem auto;
   }
 
   /* Header */
-
   .gov-header {
     display: flex;
     align-items: center;
@@ -109,7 +107,6 @@
 
 
 /* Tablet */
-
 @media (min-width: 576px) {
 
   .gov-profile-modal {
@@ -139,7 +136,6 @@
 
 
 /* Desktop */
-
 @media (min-width: 768px) {
 
   .gov-profile-modal {

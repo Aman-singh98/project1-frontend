@@ -1,24 +1,25 @@
 import { Container, Row, Col, Image } from "react-bootstrap";
+import { useTranslation } from "react-i18next";
 import { stats } from "../../assets/data/home";
 import { IMAGES } from "../../constants/images";
 
 function KeyHighlights() {
+	const { t } = useTranslation();
+
 	return (
 		<section className="highlights-section">
 			<Container>
 				<Row className="align-items-stretch">
 					<Col lg={6} className="left-content">
-						<h2>Key Highlights of First Aid Training</h2>
+						<h2>{t("home.highlights.title")}</h2>
 						<p className="subtitle">
-							Explore the growth and accomplishments of our first aid training
-							programs in promoting safety across the community and empowering
-							individuals through life-saving skills.
+							{t("home.highlights.subtitle")}
 						</p>
 						<ul className="highlight-list">
-							<li>Affiliated with National First Aid Association</li>
-							<li>Regularly hosts state & district-level training programs</li>
-							<li>Actively promotes first aid in schools & workplaces</li>
-							<li>Focuses on community safety and emergency preparedness</li>
+							<li>{t("home.highlights.bullets.point1")}</li>
+							<li>{t("home.highlights.bullets.point2")}</li>
+							<li>{t("home.highlights.bullets.point3")}</li>
+							<li>{t("home.highlights.bullets.point4")}</li>
 						</ul>
 						<div className="stats-row">
 							{stats?.map((item, index) => (
@@ -38,15 +39,15 @@ function KeyHighlights() {
 							<div className="glass-card top">
 								<i className="bi bi-globe2" />
 								<div>
-									<strong>Global Recognition</strong>
-									<span>International Standards</span>
+									<strong>{t("home.highlights.topBadge.title")}</strong>
+									<span>{t("home.highlights.topBadge.subtitle")}</span>
 								</div>
 							</div>
 							<div className="glass-card bottom">
 								<i className="bi bi-book" />
 								<div>
-									<strong>Expert Training</strong>
-									<span>Certified Programs</span>
+									<strong>{t("home.highlights.bottomBadge.title")}</strong>
+									<span>{t("home.highlights.bottomBadge.subtitle")}</span>
 								</div>
 							</div>
 						</div>

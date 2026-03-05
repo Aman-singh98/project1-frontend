@@ -1,78 +1,82 @@
 import { NavLink } from "react-router-dom";
 import { Container, Row, Col, Card, Badge } from "react-bootstrap";
+import { useTranslation } from "react-i18next";
 import QueryCard from "../../components/global/QueryCard";
 import FAQAccordion from "../../components/global/FAQAccordion";
 
-
-const services = [
-	{
-		icon: "bi-heart",
-		title: "CPR & Life Saving Training",
-		desc: "Learn CPR, AED usage, and essential life-saving techniques from certified instructors",
-		popular: true,
-	},
-	{
-		icon: "bi-box-seam",
-		title: "First Aid Kits",
-		desc: "Purchase emergency first aid kits and supplies suitable for home, office, and travel",
-		popular: true,
-	},
-	{
-		icon: "bi-book",
-		title: "Burns & Wound Care",
-		desc: "Guidance and tutorials on managing burns, cuts, and other injuries effectively",
-		popular: true,
-	},
-	{
-		icon: "bi-people",
-		title: "Child & Infant First Aid",
-		desc: "Specialized first aid techniques for infants and children to handle emergencies safely",
-	},
-	{
-		icon: "bi-telephone",
-		title: "Emergency Helpline",
-		desc: "Call our 24/7 helpline for immediate guidance during medical emergencies",
-		popular: true,
-	},
-	{
-		icon: "bi-geo-alt",
-		title: "Training Centers & Offices",
-		desc: "Find nearest training centers, office locations, and contact details for assistance",
-	},
-];
-
-const quickLinks = [
-	{
-		label: "Ambulance Service",
-		link: "ambulance",
-		subtitle: 'Emergency ambulance kit'
-	},
-	{
-		label: "First Aid Kit",
-		link: "first-add-kit",
-		subtitle: 'Browser and order first aid kits'
-	},
-	{
-		label: "About Us",
-		link: "about",
-		subtitle: 'Get in touch with us'
-	},
-	{
-		label: "Skill Centre",
-		link: "courses",
-		subtitle: 'Find skill centers and batches.'
-	}
-];
-
 function QuickServices() {
+	const { t } = useTranslation();
+
+	const services = [
+		{
+			icon: "bi-heart",
+			title: t("quickServices.services.cpr.title"),
+			desc: t("quickServices.services.cpr.description"),
+			popular: true,
+		},
+		{
+			icon: "bi-box-seam",
+			title: t("quickServices.services.firstAidKits.title"),
+			desc: t("quickServices.services.firstAidKits.description"),
+			popular: true,
+		},
+		{
+			icon: "bi-book",
+			title: t("quickServices.services.burnsCare.title"),
+			desc: t("quickServices.services.burnsCare.description"),
+			popular: true,
+		},
+		{
+			icon: "bi-people",
+			title: t("quickServices.services.childFirstAid.title"),
+			desc: t("quickServices.services.childFirstAid.description"),
+		},
+		{
+			icon: "bi-telephone",
+			title: t("quickServices.services.helpline.title"),
+			desc: t("quickServices.services.helpline.description"),
+			popular: true,
+		},
+		{
+			icon: "bi-geo-alt",
+			title: t("quickServices.services.trainingCenters.title"),
+			desc: t("quickServices.services.trainingCenters.description"),
+		},
+	];
+
+	const quickLinks = [
+		{
+			label: t("quickServices.quickLinks.items.ambulance.label"),
+			link: "ambulance",
+			subtitle: t("quickServices.quickLinks.items.ambulance.subtitle"),
+		},
+		{
+			label: t("quickServices.quickLinks.items.firstAidKit.label"),
+			link: "first-add-kit",
+			subtitle: t("quickServices.quickLinks.items.firstAidKit.subtitle"),
+		},
+		{
+			label: t("quickServices.quickLinks.items.about.label"),
+			link: "about",
+			subtitle: t("quickServices.quickLinks.items.about.subtitle"),
+		},
+		{
+			label: t("quickServices.quickLinks.items.skillCentre.label"),
+			link: "courses",
+			subtitle: t("quickServices.quickLinks.items.skillCentre.subtitle"),
+		},
+	];
+
 	return (
 		<section className="quick-section">
 			<Container className="quick-services-container">
 				<Row>
 					<Col lg={8}>
-						<h3 className="section-title">Quick Services</h3>
+						<h3 className="section-title">
+							{t("quickServices.title")}
+						</h3>
 						<p className="section-subtitle">
-							Access essential municipal services with just a few clicks.
+							{t("quickServices.subtitle")}
 						</p>
 						<Row className="g-3">
 							{services.map((service, index) => (
@@ -80,19 +84,15 @@ function QuickServices() {
 									<Card className="service-card">
 										{service.popular && (
 											<Badge className="popular-badge">
-												Popular
+												{t("quickServices.popularBadge")}
 											</Badge>
 										)}
 										<div className="service-icon">
 											<i className={`bi ${service.icon}`} />
 										</div>
 										<Card.Body>
-											<Card.Title>
-												{service.title}
-											</Card.Title>
-											<Card.Text>
-												{service.desc}
-											</Card.Text>
+											<Card.Title>{service.title}</Card.Title>
+											<Card.Text>{service.desc}</Card.Text>
 										</Card.Body>
 									</Card>
 								</Col>
@@ -100,9 +100,11 @@ function QuickServices() {
 						</Row>
 					</Col>
 					<Col lg={4} className="quick-links">
-						<h3 className="section-title">What we do</h3>
+						<h3 className="section-title">
+							{t("quickServices.quickLinks.title")}
+						</h3>
 						<p className="section-subtitle">
-							Navigate to important sections quickly.
+							{t("quickServices.quickLinks.subtitle")}
 						</p>
 						{quickLinks.map((item, index) => (
 							<NavLink
@@ -112,8 +114,12 @@ function QuickServices() {
 							>
 								<i className="bi bi-file-text link-icon" />
 								<div>
-									<span className="title d-block">{item.label}</span>
-									<span className="subtitle">{item.subtitle}</span>
+									<span className="title d-block">
+										{item.label}
+									</span>
+									<span className="subtitle">
+										{item.subtitle}
+									</span>
 								</div>
 								<i className="bi bi-chevron-right ms-auto" />
 							</NavLink>
@@ -127,7 +133,7 @@ function QuickServices() {
 						<FAQAccordion />
 					</Col>
 					<Col xs={12} lg={7}>
-						<QueryCard title="Have a question? Contact us directly!" />
+						<QueryCard title={t("quickServices.queryCardTitle")} />
 					</Col>
 				</Row>
 			</Container>

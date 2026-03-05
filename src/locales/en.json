@@ -124,9 +124,37 @@
       "viewAll": "View All"
     },
     "training": {
-      "title": "Training in Action",
+      "title": "First Aid Training Programs",
       "subtitle": "Take a glimpse at our training sessions and facilities.",
       "viewAll": "View All"
+    },
+    "highlights": {
+      "title": "Key Highlights of First Aid Training",
+      "subtitle": "Explore the growth and accomplishments of our first aid training programs in promoting safety across the community and empowering individuals through life-saving skills.",
+      "bullets": {
+        "point1": "Affiliated with National First Aid Association",
+        "point2": "Regularly hosts state & district-level training programs",
+        "point3": "Actively promotes first aid in schools & workplaces",
+        "point4": "Focuses on community safety and emergency preparedness"
+      },
+      "topBadge": {
+        "title": "Global Recognition",
+        "subtitle": "International Standards"
+      },
+      "bottomBadge": {
+        "title": "Expert Training",
+        "subtitle": "Certified Programs"
+      }
+    },
+    "programs": {
+      "title": "First Aid Training Programs",
+      "description": "Empowering individuals with essential life-saving skills through hands-on training and certified programs. Learn CPR, wound care, emergency response, and child first aid to confidently handle real-life situations.",
+      "viewAll": "View All",
+      "tallCardTitleLine1": "Learn First Aid",
+      "tallCardTitleLine2": "Training",
+      "tallCardTitleLine3": "Save Lives",
+      "tallCardTitleLine4": "Today",
+      "viewAllCourses": "View All Courses →"
     }
   },
   "courses": {
@@ -155,6 +183,222 @@
   },
   "common": {
     "viewAll": "View All"
+  },
+  "auth": {
+    "forgotPassword": {
+      "title": "Forgot password?",
+      "description": "Enter your email or phone to receive an OTP",
+      "labelIdentifier": "Email or mobile number",
+      "placeholderIdentifier": "Enter your email or mobile number",
+      "errorRequired": "Email or mobile number is required",
+      "errorInvalid": "Enter valid email or 10-digit mobile",
+      "sendOtp": "Send OTP",
+      "backToLogin": "Back to login",
+      "toastSuccess": "OTP sent successfully"
+    }
+  },
+  "faq": {
+    "sectionTitle": "Frequently asked questions",
+    "sectionSubtitle": "Find answers to common questions about our training courses and certification."
+  },
+  "quickServices": {
+    "title": "Quick Services",
+    "subtitle": "Access essential municipal services with just a few clicks.",
+    "popularBadge": "Popular",
+    "services": {
+      "cpr": {
+        "title": "CPR & Life Saving Training",
+        "description": "Learn CPR, AED usage, and essential life-saving techniques from certified instructors"
+      },
+      "firstAidKits": {
+        "title": "First Aid Kits",
+        "description": "Purchase emergency first aid kits and supplies suitable for home, office, and travel"
+      },
+      "burnsCare": {
+        "title": "Burns & Wound Care",
+        "description": "Guidance and tutorials on managing burns, cuts, and other injuries effectively"
+      },
+      "childFirstAid": {
+        "title": "Child & Infant First Aid",
+        "description": "Specialized first aid techniques for infants and children to handle emergencies safely"
+      },
+      "helpline": {
+        "title": "Emergency Helpline",
+        "description": "Call our 24/7 helpline for immediate guidance during medical emergencies"
+      },
+      "trainingCenters": {
+        "title": "Training Centers & Offices",
+        "description": "Find nearest training centers, office locations, and contact details for assistance"
+      }
+    },
+    "quickLinks": {
+      "title": "What we do",
+      "subtitle": "Navigate to important sections quickly.",
+      "items": {
+        "ambulance": {
+          "label": "Ambulance Service",
+          "subtitle": "Emergency ambulance kit"
+        },
+        "firstAidKit": {
+          "label": "First Aid Kit",
+          "subtitle": "Browse and order first aid kits"
+        },
+        "about": {
+          "label": "About Us",
+          "subtitle": "Get in touch with us"
+        },
+        "skillCentre": {
+          "label": "Skill Centre",
+          "subtitle": "Find skill centers and batches."
+        }
+      }
+    },
+    "queryCardTitle": "Have a question? Contact us directly!"
+  },
+  "about": {
+    "hero": {
+      "title": "About Us",
+      "subtitle": "Leading the way in professional training and skill development since 2011"
+    },
+    "whoWeAre": {
+      "badge": "WHO WE ARE",
+      "heading": "St John Ambulance International Association",
+      "body1": "St John Ambulance International Association is a Non-Government International Organization u/s 8 of Companies under Ministry of Corporate Affairs, New Delhi (Government of India) Charity No. 114932 & CIN U85320HR2019NPL080345. The International Organization runs multi healthcare & first aid courses under International Module Certification issued country worldwide for Nation Paramount Mission 2030.",
+      "body2": "The International Organization is involved in multi services for worldwide areas e.g. First Aid Kit, Volunteer, Membership, Ambulance Service, Internship, Donation, Jobs & other teaching medical support first aid training and the provision of free ambulance services."
+    }
+  },
+  "admin": {
+    "sidebar": {
+      "logoAlt": "Organization Logo",
+      "titleLine1": "ST JOHN AMBULANCE",
+      "titleLine2": "INTERNATIONAL ASSOCIATION",
+      "panelTitle": "Admin Panel",
+      "homeButton": "Home"
+    },
+    "nav": {
+      "kits": "Kits",
+      "internships": "Internships",
+      "courses": "Courses",
+      "queries": "Queries",
+      "subscribers": "Subscribers",
+      "users": "Users"
+    },
+    "common": {
+      "sNo": "#",
+      "action": "Action",
+      "active": "Active",
+      "inactive": "Inactive",
+      "saving": "Saving...",
+      "noData": "No records found"
+    },
+    "actions": {
+      "delete": "Delete",
+      "view": "View",
+      "approve": "Approve",
+      "reject": "Reject"
+    },
+    "queries": {
+      "title": "Internship Queries",
+      "confirmDelete": "Delete this query?",
+      "empty": "No queries found",
+      "table": {
+        "index": "#",
+        "name": "Name",
+        "email": "Email",
+        "mobile": "Mobile",
+        "state": "State",
+        "district": "District",
+        "message": "Message",
+        "action": "Action"
+      }
+    },
+    "subscribers": {
+      "title": "Newsletter Subscribers",
+      "confirmDelete": "Delete this subscriber?",
+      "empty": "No subscribers found",
+      "table": {
+        "index": "#",
+        "email": "Email",
+        "subscribedDate": "Subscribed Date",
+        "action": "Action"
+      }
+    },
+    "internships": {
+      "title": "Internship Applications",
+      "confirmDelete": "Delete this internship?",
+      "table": {
+        "name": "Name",
+        "email": "Email",
+        "area": "Area",
+        "duration": "Duration",
+        "status": "Status",
+        "actions": "Actions"
+      }
+    },
+    "courses": {
+      "title": "Courses Management",
+      "addTitle": "Add New Course",
+      "confirmDelete": "Delete this course?",
+      "empty": "No courses available",
+      "listTitle": "All Courses",
+      "form": {
+        "title": "Title",
+        "durationDays": "Duration (Days)",
+        "description": "Description",
+        "price": "Price",
+        "mode": "Mode",
+        "category": "Category",
+        "languages": "Languages",
+        "courseImage": "Course Image",
+        "titlePlaceholder": "Course Title",
+        "languagesPlaceholder": "Hindi, English"
+      },
+      "buttons": {
+        "add": "Add Course"
+      },
+      "table": {
+        "image": "Image",
+        "title": "Title",
+        "duration": "Duration",
+        "price": "Price",
+        "mode": "Mode",
+        "action": "Action"
+      }
+    },
+    "kits": {
+      "title": "Kit Management",
+      "addTitle": "Add New Kit",
+      "confirmDelete": "Delete this kit?",
+      "listTitle": "All Kits",
+      "empty": "No kits available",
+      "form": {
+        "title": "Title",
+        "description": "Description",
+        "oldPrice": "Old Price",
+        "newPrice": "New Price",
+        "image": "Kit Image",
+        "titlePlaceholder": "Kit Title",
+        "descriptionPlaceholder": "Kit Description"
+      },
+      "buttons": {
+        "add": "Add Kit"
+      },
+      "table": {
+        "image": "Image",
+        "title": "Title",
+        "description": "Description",
+        "price": "Price",
+        "status": "Status",
+        "action": "Action"
+      }
+    },
+    "dashboard": {
+      "totalKits": "Total Kits",
+      "internships": "Internships"
+    },
+    "users": {
+      "title": "Users"
+    }
   }
 }
 

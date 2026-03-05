@@ -10,6 +10,7 @@ import {
     Card,
     Badge,
 } from "react-bootstrap";
+import { useTranslation } from "react-i18next";
 import HeroSection from "../components/global/HeroSection";
 import { IMAGES } from "../constants/images";
 import "bootstrap-icons/font/bootstrap-icons.css";
@@ -152,11 +153,13 @@ const JOURNEY_MILESTONES = [
 ];
 
 function About() {
+    const { t } = useTranslation();
+
     return (
         <>
             <HeroSection
-                title="About Us"
-                subtitle="Leading the way in professional training and skill development since 2011"
+                title={t("about.hero.title")}
+                subtitle={t("about.hero.subtitle")}
                 backgroundImage={IMAGES.AMBULANCE}
             />
 
@@ -183,23 +186,17 @@ function About() {
                             {/* Text column */}
                             <Col xs={12} md={5} className="d-flex flex-column justify-content-center">
                                 <div className="p-4 p-md-5">
-                                    <span className="badge who-we-are-pill-badge mb-3">WHO WE ARE</span>
+                                    <span className="badge who-we-are-pill-badge mb-3">
+                                        {t("about.whoWeAre.badge")}
+                                    </span>
                                     <h2 className="h4 h3-md fw-bold text-dark mb-3">
-                                        St John Ambulance International Association
+                                        {t("about.whoWeAre.heading")}
                                     </h2>
                                     <p className="text-secondary small mb-3 lh-base">
-                                        St John Ambulance International Association is a Non-Government International
-                                        Organization u/s 8 of Companies under Ministry of Corporate Affairs, New Delhi
-                                        (Government of India) Charity No. 114932 &amp; CIN U85320HR2019NPL080345.
-                                        The International Organization runs multi healthcare &amp; first aid courses
-                                        under International Module Certification issued country worldwide for Nation
-                                        Paramount Mission 2030.
+                                        {t("about.whoWeAre.body1")}
                                     </p>
                                     <p className="text-secondary small mb-0 lh-base">
-                                        The International Organization is involved in multi services for worldwide
-                                        areas e.g. First Aid Kit, Volunteer, Membership, Ambulance Service, Internship,
-                                        Donation, Jobs &amp; other teaching medical support first aid training and the
-                                        provision of free ambulance services.
+                                        {t("about.whoWeAre.body2")}
                                     </p>
                                 </div>
                             </Col>
@@ -207,60 +204,6 @@ function About() {
                     </Card>
                 </Container>
             </section>
-            {/* <section className="py-5 about-page bg-light">
-                <Container>
-                    <Row className="gy-4 align-items-center">
-                        <Col xs={12} lg={6}>
-                            <div className="about-main-image rounded-4 overflow-hidden shadow-sm">
-                                <img
-                                    src={IMAGES.AMBULANCE}
-                                    alt="Training in progress"
-                                    className="img-fluid w-100 h-100 object-fit-cover"
-                                />
-                            </div>
-                        </Col>
-                        <Col xs={12} lg={6}>
-                            <Badge bg="light" className="about-pill-badge mb-3">
-                                <span className="text-uppercase small fw-semibold text-orange">
-                                    Who We Are
-                                </span>
-                            </Badge>
-                            <h2 className="h3 fw-bold mb-3">
-                                St John Ambulance International Association
-                            </h2>
-                            <p className="text-muted mb-3">
-                                St John Ambulance International Association is a non‑government
-                                organisation dedicated to first aid, emergency response and
-                                community safety. We work closely with government departments,
-                                healthcare institutions and community partners to build a safer,
-                                better prepared society.
-                            </p>
-                            <p className="text-muted mb-3">
-                                From foundational first aid courses to advanced life support
-                                training, we equip individuals and organisations with practical,
-                                hands‑on skills that save lives. Our programs are designed to match
-                                the standards and expectations of a modern Haryana government
-                                initiative – accessible, reliable and citizen‑centric.
-                            </p>
-                            <div className="d-flex flex-wrap gap-3 mt-3">
-                                <div>
-                                    <div className="h4 mb-0 text-orange fw-bold">117+</div>
-                                    <small className="text-muted">Years of excellence</small>
-                                </div>
-                                <div>
-                                    <div className="h4 mb-0 fw-bold">1L+</div>
-                                    <small className="text-muted">Learners trained</small>
-                                </div>
-                                <div>
-                                    <div className="h4 mb-0 fw-bold">24×7</div>
-                                    <small className="text-muted">Emergency support ethos</small>
-                                </div>
-                            </div>
-                        </Col>
-                    </Row>
-                </Container>
-            </section> */}
-
             {/* ===== CORPORATE TRAINING PROGRAMS ===== */}
             <section className="py-5 about-section-soft">
                 <Container>

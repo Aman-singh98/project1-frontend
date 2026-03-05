@@ -1,5 +1,15 @@
 import { useEffect, useState } from "react";
-import { Card, Row, Col, Form, Button, Table, Spinner, Image } from "react-bootstrap";
+import {
+	Card,
+	Row,
+	Col,
+	Form,
+	Button,
+	Table,
+	Spinner,
+	Image,
+} from "react-bootstrap";
+import { useTranslation } from "react-i18next";
 import axiosInstance from "../../../api/axiosInstance";
 
 const defaultValues = {
@@ -9,18 +19,16 @@ const defaultValues = {
 	price: "",
 	mode: "offline",
 	category: "",
-	languages: ""
+	languages: "",
 };
 
 function AdminCourses() {
-	// States
+	const { t } = useTranslation();
 	const [courses, setCourses] = useState([]);
 	const [loading, setLoading] = useState(false);
 	const [tableLoading, setTableLoading] = useState(true);
 	const [formData, setFormData] = useState(defaultValues);
 	const [image, setImage] = useState(null);
-
-	// ================= FETCH COURSES =================
 
 	const fetchCourses = async () => {
 		try {
@@ -38,16 +46,14 @@ function AdminCourses() {
 		fetchCourses();
 	}, []);
 
-	// ================= HANDLE FORM =================
 	const handleChange = (e) => {
 		const { name, value } = e.target;
 		setFormData((prev) => ({
 			...prev,
-			[name]: value
+			[name]: value,
 		}));
 	};
 
-	// ================= SUBMIT COURSE =================
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		setLoading(true);
@@ -70,9 +76,8 @@ function AdminCourses() {
 		}
 	};
 
-	// ================= DELETE COURSE =================
 	const handleDelete = async (id) => {
-		if (!window.confirm("Delete this course?")) return;
+		if (!window.confirm(t("admin.courses.confirmDelete"))) return;
 		try {
 			await axiosInstance.delete(`/courses/${id}`);
 			fetchCourses();
@@ -83,27 +88,33 @@ function AdminCourses() {
 
 	return (
 		<>
-			<h4 className="mb-4 fw-bold">Courses Management</h4>
+			<h4 className="mb-4 fw-bold">{t("admin.courses.title")}</h4>
 			<Card className="mb-4 shadow-sm">
 				<Card.Body>
-					<h5 className="mb-4">Add New Course</h5>
+					<h5 className="mb-4">{t("admin.courses.addTitle")}</h5>
 					<Form onSubmit={handleSubmit}>
 						<Row className="g-3">
 							<Col xs={12} md={6}>
 								<Form.Group>
-									<Form.Label>Title</Form.Label>
+									<Form.Label>
+										{t("admin.courses.form.title")}
+									</Form.Label>
 									<Form.Control
 										name="title"
 										value={formData.title}
 										onChange={handleChange}
-										placeholder="Course Title"
+										placeholder={t(
+											"admin.courses.form.titlePlaceholder"
+										)}
 										required
 									/>
 								</Form.Group>
 							</Col>
 							<Col xs={12} md={6}>
 								<Form.Group>
-									<Form.Label>Duration (Days)</Form.Label>
+									<Form.Label>
+										{t("admin.courses.form.durationDays")}
+									</Form.Label>
 									<Form.Control
 										name="duration"
 										type="number"
@@ -115,7 +126,9 @@ function AdminCourses() {
 							</Col>
 							<Col xs={12}>
 								<Form.Group>
-									<Form.Label>Description</Form.Label>
+									<Form.Label>
+										{t("admin.courses.form.description")}
+									</Form.Label>
 									<Form.Control
 										as="textarea"
 										rows={2}
@@ -127,7 +140,9 @@ function AdminCourses() {
 							</Col>
 							<Col xs={12} md={6}>
 								<Form.Group>
-									<Form.Label>Price</Form.Label>
+									<Form.Label>
+										{t("admin.courses.form.price")}
+									</Form.Label>
 									<Form.Control
 										name="price"
 										type="number"
@@ -139,7 +154,9 @@ function AdminCourses() {
 							</Col>
 							<Col xs={12} md={6}>
 								<Form.Group>
-									<Form.Label>Mode</Form.Label>
+									<Form.Label>
+										{t("admin.courses.form.mode")}
+									</Form.Label>
 									<Form.Select
 										name="mode"
 										value={formData.mode}
@@ -153,16 +170,26 @@ function AdminCourses() {
 							</Col>
 							<Col xs={12} md={6}>
 								<Form.Group>
-									<Form.Label>Category</Form.Label>
-									<Form.Control name="category" value={formData.category} onChange={handleChange} />
+									<Form.Label>
+										{t("admin.courses.form.category")}
+									</Form.Label>
+									<Form.Control
+										name="category"
+										value={formData.category}
+										onChange={handleChange}
+									/>
 								</Form.Group>
 							</Col>
 							<Col xs={12} md={6}>
 								<Form.Group>
-									<Form.Label>Languages</Form.Label>
+									<Form.Label>
+										{t("admin.courses.form.languages")}
+									</Form.Label>
 									<Form.Control
 										name="languages"
-										placeholder="Hindi, English"
+										placeholder={t(
+											"admin.courses.form.languagesPlaceholder"
+										)}
 										value={formData.languages}
 										onChange={handleChange}
 									/>
@@ -170,12 +197,27 @@ function AdminCourses() {
 							</Col>
 							<Col xs={12} md={6}>
 								<Form.Group>
-									<Form.Label>Course Image</Form.Label>
-									<Form.Control type="file" onChange={(e) => setImage(e.target.files[0])} />
+									<Form.Label>
+										{t("admin.courses.form.courseImage")}
+									</Form.Label>
+									<Form.Control
+										type="file"
+										onChange={(e) =>
+											setImage(e.target.files[0])
+										}
+									/>
 								</Form.Group>
 							</Col>
-							<Col xs={12} md={6} className="d-flex align-items-end">
-								<Button type="submit" className="w-100 btn-orange" disabled={loading}>
+							<Col
+								xs={12}
+								md={6}
+								className="d-flex align-items-end"
+							>
+								<Button
+									type="submit"
+									className="w-100 btn-orange"
+									disabled={loading}
+								>
 									{loading ? (
 										<>
 											<Spinner
@@ -183,10 +225,10 @@ function AdminCourses() {
 												animation="border"
 												className="me-2"
 											/>
-											Saving...
+											{t("admin.common.saving")}
 										</>
 									) : (
-										"Add Course"
+										t("admin.courses.buttons.add")
 									)}
 								</Button>
 							</Col>
@@ -196,25 +238,32 @@ function AdminCourses() {
 			</Card>
 			<Card className="shadow-sm">
 				<Card.Body>
-					<h5 className="mb-4">All Courses</h5>
+					<h5 className="mb-4">
+						{t("admin.courses.listTitle")}
+					</h5>
 					{tableLoading ? (
 						<div className="text-center py-5">
 							<Spinner animation="border" />
 						</div>
 					) : courses.length === 0 ? (
 						<div className="text-center text-muted py-4">
-							No courses available
+							{t("admin.courses.empty")}
 						</div>
 					) : (
-						<Table bordered hover responsive className="align-middle">
+						<Table
+							bordered
+							hover
+							responsive
+							className="align-middle"
+						>
 							<thead>
 								<tr>
-									<th>Image</th>
-									<th>Title</th>
-									<th>Duration</th>
-									<th>Price</th>
-									<th>Mode</th>
-									<th>Action</th>
+									<th>{t("admin.courses.table.image")}</th>
+									<th>{t("admin.courses.table.title")}</th>
+									<th>{t("admin.courses.table.duration")}</th>
+									<th>{t("admin.courses.table.price")}</th>
+									<th>{t("admin.courses.table.mode")}</th>
+									<th>{t("admin.courses.table.action")}</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -227,20 +276,32 @@ function AdminCourses() {
 														width: 60,
 														height: 60,
 														overflow: "hidden",
-														borderRadius: 6
+														borderRadius: 6,
 													}}
 												>
-													<Image src={course.image} fluid />
+													<Image
+														src={course.image}
+														fluid
+													/>
 												</div>
 											)}
 										</td>
 										<td>{course.title}</td>
-										<td>{course.duration} days</td>
+										<td>
+											{course.duration}{" "}
+											{t("courses.daysSuffix")}
+										</td>
 										<td>₹{course.price}</td>
 										<td>{course.mode}</td>
 										<td>
-											<Button size="sm" variant="danger" onClick={() => handleDelete(course._id)}>
-												Delete
+											<Button
+												size="sm"
+												variant="danger"
+												onClick={() =>
+													handleDelete(course._id)
+												}
+											>
+												{t("admin.actions.delete")}
 											</Button>
 										</td>
 									</tr>
