@@ -31,7 +31,7 @@ function AdminGuard({ children }) {
     checkAdmin();
   }, []);
 
-  if (authorized === null) return null; // loading
+  if (authorized === null) return null;
 
   if (!authorized) return <Navigate to="/" replace />;
 
