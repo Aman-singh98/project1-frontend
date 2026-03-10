@@ -179,7 +179,6 @@ function TopBar() {
 				show={showLogin}
 				handleClose={() => setShowLogin(false)}
 				openSignup={() => setShowRegister(true)}
-				openVerificationPopup={() => setVerification(true)}
 				openForgotPassword={() => {
 					setShowForgot(true)
 					setShowLogin(false)
@@ -194,6 +193,11 @@ function TopBar() {
 				show={verification}
 				handleClose={() => setVerification(false)}
 				mobile="Mobile"
+				handleForgot={() => setShowForgot(true)}
+				openLogin={()=>{
+					setShowLogin(true);
+					setVerification(false);
+				}}
 			/>
 			<ForgotPasswordModal
 				show={showForgot}
@@ -201,7 +205,7 @@ function TopBar() {
 				openLogin={() => setShowLogin(true)}
 				openOtp={() => {
 					setShowForgot(false);
-					setVerification(false);
+					setVerification(true);
 					// setUserMobile(mobile);
 				}}
 			/>

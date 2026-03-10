@@ -1,0 +1,51 @@
+// Sign up page
+/* Label style */
+.form-label-custom {
+    font-size: 12px;
+    font-weight: 600;
+    color: #6b6b6b;
+    letter-spacing: 0.5px;
+}
+
+/* Input base style */
+.input-green {
+    border: none !important;
+    border-bottom: 2px solid #7ec9a9 !important;
+    border-radius: 0 !important;
+    padding-left: 0;
+    font-size: 14px;
+}
+
+/* Placeholder style */
+.input-green::placeholder {
+    font-size: 13px;
+    color: #8a8a8a;
+    opacity: 1;
+}
+
+/* Remove bootstrap focus shadow */
+.input-green:focus {
+    box-shadow: none !important;
+    outline: none !important;
+    border-bottom: 2px solid #7ec9a9 !important;
+}
+
+/* Orange button */
+.btn-orange {
+    background: #f25c2a;
+    border: none;
+}
+
+.btn-orange:hover {
+    background: #e14f1f;
+}
+
+/* Orange text */
+.text-orange {
+    color: #f25c2a;
+    text-decoration: none;
+}
+
+.text-orange:hover {
+    text-decoration: underline;
+}

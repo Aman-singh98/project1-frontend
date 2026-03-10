@@ -1,15 +1,28 @@
-import { Modal, Form, Button } from "react-bootstrap";
+/**
+ * ForgotPasswordModal.jsx
+ * -----------------------
+ * Forgot password flow
+ *
+ * Step:
+ * - Enter email or mobile
+ * - Send OTP
+ */
+import { useState } from "react";
+import { Modal, Button, Form, Spinner, Image } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+import { IMAGES } from "../../../constants/images";
 import { useTranslation } from "react-i18next";
 
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const MOBILE_REGEX = /^[6-9]\d{9}$/;
+
 function ForgotPasswordModal({ show, handleClose, openLogin, openOtp }) {
-	const {
-		register,
-		handleSubmit,
-		formState: { errors },
-	} = useForm();
+
 	const { t } = useTranslation();
+	const [loading, setLoading] = useState(false);
+
+	const { register, handleSubmit, formState: { errors }} = useForm();
 
 	const onSubmit = (data) => {
 		console.log("Send reset OTP to:", data.identifier);
@@ -18,58 +31,84 @@ function ForgotPasswordModal({ show, handleClose, openLogin, openOtp }) {
 	};
 
 	return (
-		<Modal show={show} onHide={handleClose} centered backdrop="static">
-			<Modal.Header closeButton>
-				<Modal.Title>{t("auth.forgotPassword.title")}</Modal.Title>
-			</Modal.Header>
+		<Modal centered show={show} onHide={handleClose}>
 			<Modal.Body className="p-4">
-				<p>{t("auth.forgotPassword.description")}</p>
+				<div className="text-center mb-3">
+					<Image
+						src={IMAGES.RED_LOGO}
+						style={{ height: "50px" }}
+					/>
+				</div>
+				<h4 className="text-center mb-2">
+					Forgot password?
+				</h4>
+				<p
+					className="text-center mb-4"
+					style={{
+						color: "#2e7d32",
+						fontSize: "14px",
+					}}
+				>
+					{t("auth.forgotPassword.description")}
+				</p>
+
 				<Form onSubmit={handleSubmit(onSubmit)}>
-					<Form.Group className="mb-4">
-						<Form.Label className="small fw-semibold">
-							{t("auth.forgotPassword.labelIdentifier")}
+					<Form.Group className="mb-3">
+						<Form.Label>
+							Email or Mobile Number
 						</Form.Label>
 						<Form.Control
 							type="text"
-							placeholder={t("auth.forgotPassword.placeholderIdentifier")}
+							placeholder="Enter your email or mobile number"
 							{...register("identifier", {
-								required: t("auth.forgotPassword.errorRequired"),
-								validate: (value) => {
-									const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-									const mobileRegex = /^[6-9]\d{9}$/;
-
-									return (
-										emailRegex.test(value) ||
-										mobileRegex.test(value) ||
-										t("auth.forgotPassword.errorInvalid")
-									);
-								},
+								required: "Email or mobile required",
+								validate: (value) =>
+									EMAIL_REGEX.test(value) ||
+									MOBILE_REGEX.test(value) ||
+									"Enter valid email or mobile",
 							})}
-							isInvalid={errors.identifier}
+							isInvalid={Boolean(errors.identifier)}
 						/>
 						<Form.Control.Feedback type="invalid">
 							{errors.identifier?.message}
 						</Form.Control.Feedback>
+
 					</Form.Group>
 					<Button
 						type="submit"
-						className="w-100 btn-orange mb-3"
-						variant="secondary"
+						className="w-100 btn-orange mb-3 fs-14"
+						variant="link"
+						style={{ color: "white" }}
+						disabled={loading}
 					>
-						{t("auth.forgotPassword.sendOtp")}
+
+						{loading ? (
+							<>
+								<Spinner
+									size="sm"
+									animation="border"
+									className="me-2"
+								/>
+								Sending OTP...
+							</>
+						) : (
+							"Send OTP"
+						)}
+
 					</Button>
-					<div className="text-center">
-						<span
-							className="text-decoration-underline cursor-pointer"
-							onClick={() => {
-								handleClose();
-								openLogin();
-							}}
-						>
-							{t("auth.forgotPassword.backToLogin")}
-						</span>
-					</div>
 				</Form>
+				<div className="text-center">
+					<button
+						type="button"
+						className="btn btn-link text-dark p-0 fs-14"
+						onClick={() => {
+							handleClose();
+							openLogin();
+						}}
+					>
+						Back to login
+					</button>
+				</div>
 			</Modal.Body>
 		</Modal>
 	);

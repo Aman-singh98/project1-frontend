@@ -1,6 +1,13 @@
+/**
+ * RegisterModal.jsx
+ * -----------------
+ * Create account modal
+ */
+
 import { Modal, Form, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { ROUTERS } from "../../constants/router";
 
 function RegisterModal({ show, handleClose, openLogin }) {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
@@ -11,28 +18,25 @@ function RegisterModal({ show, handleClose, openLogin }) {
         reset();
     };
 
+    function handleLinkNavigation() {
+        handleClose();
+    }
+
     return (
-        <Modal
-            show={show}
-            onHide={handleClose}
-            centered
-            backdrop="static"
-            size="md"
-        >
-            <Modal.Header closeButton>
-                <Modal.Title>
-                    Create account
-                </Modal.Title>
-            </Modal.Header>
+        <Modal show={show} onHide={handleClose} centered size="md">
             <Modal.Body className="p-4">
+                <h4 className="fw-semibold mb-4">
+                    Create account
+                </h4>
                 <Form onSubmit={handleSubmit(onSubmit)}>
                     <Form.Group className="mb-3">
-                        <Form.Label className="small fw-semibold">
-                            Full name
+                        <Form.Label className="form-label-custom">
+                            FULL NAME
                         </Form.Label>
                         <Form.Control
                             type="text"
                             placeholder="Enter your full name"
+                            className="input-green"
                             {...register("fullName", {
                                 required: "Full name is required",
                                 minLength: {
@@ -44,19 +48,20 @@ function RegisterModal({ show, handleClose, openLogin }) {
                                     message: "Only letters allowed",
                                 },
                             })}
-                            isInvalid={errors.fullName}
+                            isInvalid={Boolean(errors.fullName)}
                         />
                         <Form.Control.Feedback type="invalid">
                             {errors.fullName?.message}
                         </Form.Control.Feedback>
                     </Form.Group>
                     <Form.Group className="mb-3">
-                        <Form.Label className="small fw-semibold">
-                            Email address
+                        <Form.Label className="form-label-custom">
+                            EMAIL ADDRESS
                         </Form.Label>
                         <Form.Control
                             type="email"
                             placeholder="Enter your email"
+                            className="input-green"
                             {...register("email", {
                                 required: "Email is required",
                                 pattern: {
@@ -64,19 +69,20 @@ function RegisterModal({ show, handleClose, openLogin }) {
                                     message: "Enter valid email",
                                 },
                             })}
-                            isInvalid={errors.email}
+                            isInvalid={Boolean(errors.email)}
                         />
                         <Form.Control.Feedback type="invalid">
                             {errors.email?.message}
                         </Form.Control.Feedback>
                     </Form.Group>
                     <Form.Group className="mb-3">
-                        <Form.Label className="small fw-semibold">
-                            Mobile number
+                        <Form.Label className="form-label-custom">
+                            MOBILE NUMBER
                         </Form.Label>
                         <Form.Control
                             type="text"
                             placeholder="Enter your mobile number"
+                            className="input-green"
                             {...register("mobile", {
                                 required: "Mobile number is required",
                                 pattern: {
@@ -84,19 +90,20 @@ function RegisterModal({ show, handleClose, openLogin }) {
                                     message: "Enter valid 10-digit mobile number",
                                 },
                             })}
-                            isInvalid={errors.mobile}
+                            isInvalid={Boolean(errors.mobile)}
                         />
                         <Form.Control.Feedback type="invalid">
                             {errors.mobile?.message}
                         </Form.Control.Feedback>
                     </Form.Group>
-                    <Form.Group className="mb-3">
-                        <Form.Label className="small fw-semibold">
-                            Aadhaar number
+                    <Form.Group className="mb-4">
+                        <Form.Label className="form-label-custom">
+                            AADHAAR NUMBER
                         </Form.Label>
                         <Form.Control
                             type="text"
                             placeholder="Enter your 12-digit Aadhaar number"
+                            className="input-green"
                             {...register("aadhaar", {
                                 required: "Aadhaar number is required",
                                 pattern: {
@@ -104,27 +111,30 @@ function RegisterModal({ show, handleClose, openLogin }) {
                                     message: "Aadhaar must be exactly 12 digits",
                                 },
                             })}
-                            isInvalid={errors.aadhaar}
+                            isInvalid={Boolean(errors.aadhaar)}
                         />
                         <Form.Control.Feedback type="invalid">
                             {errors.aadhaar?.message}
                         </Form.Control.Feedback>
                     </Form.Group>
-                    <Button type="submit" variant="secondary" className="w-100 mb-3">
+                    <Button
+                        type="submit"
+                        className="w-100 btn-orange mb-3"
+                        style={{ color: "#fff" }}
+                    >
                         Create account
                     </Button>
-                    <p className="text-center small">
+                    <p className="text-center small mb-2">
                         By continuing, you agree to our{" "}
-                        <Link to="#" className="text-orange">
+                        <Link to={ROUTERS.Terms} className="text-orange" onClick={handleLinkNavigation}>
                             terms & conditions
                         </Link>
                     </p>
-                    <hr />
-                    <p className="text-center small">
+                    <hr className="my-3 border-success opacity-25" />
+                    <p className="text-center small mb-0">
                         Already have an account?{" "}
                         <span
-                            className="text-orange"
-                            style={{ cursor: "pointer" }}
+                            className="text-orange cursor-pointer"
                             onClick={() => {
                                 handleClose();
                                 openLogin();

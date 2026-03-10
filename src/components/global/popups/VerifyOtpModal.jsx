@@ -2,10 +2,11 @@ import { Modal, Button } from "react-bootstrap";
 import { useEffect, useRef, useState } from "react";
 import { toast } from "react-toastify";
 
-function VerifyOtpModal({ show, handleClose, mobile }) {
-	const OTP_LENGTH = 6;
-	const RESEND_TIME = 60;
+const OTP_LENGTH = 6;
+const RESEND_TIME = 60;
 
+function VerifyOtpModal({ show, handleClose, mobile, openLogin, handleForgot }) {
+	// States
 	const [otp, setOtp] = useState(Array(OTP_LENGTH).fill(""));
 	const [timer, setTimer] = useState(RESEND_TIME);
 	const [canResend, setCanResend] = useState(false);
@@ -72,6 +73,11 @@ function VerifyOtpModal({ show, handleClose, mobile }) {
 
 	const isOtpComplete = otp.every((digit) => digit !== "");
 
+	function handleChangeCred() {
+		handleClose();
+		handleForgot();
+	}
+
 	return (
 		<Modal show={show} onHide={handleClose} centered backdrop="static">
 			<Modal.Header closeButton>
@@ -83,7 +89,6 @@ function VerifyOtpModal({ show, handleClose, mobile }) {
 				<p className="small">
 					Code sent to <span className="text-orange">{mobile}</span>
 				</p>
-				{/* OTP INPUTS */}
 				<div className="d-flex justify-content-center gap-2 my-4">
 					{otp.map((digit, index) => (
 						<input
@@ -102,7 +107,6 @@ function VerifyOtpModal({ show, handleClose, mobile }) {
 						/>
 					))}
 				</div>
-				{/* TIMER */}
 				<p className="small">
 					Didn't receive the code?{" "}
 					{canResend ? (
@@ -121,20 +125,27 @@ function VerifyOtpModal({ show, handleClose, mobile }) {
 						</>
 					)}
 				</p>
-				<p className="small text-decoration-underline cursor-pointer">
+				<p className="small text-decoration-underline cursor-pointer text-orange" onClick={handleChangeCred}>
 					Change credential
 				</p>
 				<Button
-					className="w-100 btn-orange mt-3"
+					className="w-100 btn-orange mt-1"
 					disabled={!isOtpComplete}
 					onClick={handleVerify}
 				>
 					Verify OTP
 				</Button>
 				<hr className="my-4" />
-				<p className="small">
+				<p className="text-center small">
 					Already have an account?{" "}
-					<span className="text-orange cursor-pointer">
+					<span
+						className="text-orange"
+						style={{ cursor: "pointer" }}
+						onClick={() => {
+							handleClose();
+							openLogin();
+						}}
+					>
 						Sign in here
 					</span>
 				</p>
