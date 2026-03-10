@@ -1,14 +1,6 @@
 import axiosInstance from "../api/axiosInstance";
 
 // ================= CREATE KIT =================
-// export const createKit = async (formData) => {
-//   console.log(formData, 'formData');
-//   return axiosInstance.post("/admin/kits", formData, {
-//     headers: {
-//       "Content-Type": "multipart/form-data",
-//     },
-//   });
-// };
 export const createKit = async (formData) => {
   return axiosInstance.post("/admin/kits", formData);
 };

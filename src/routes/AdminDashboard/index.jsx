@@ -10,6 +10,8 @@ import InternshipManagement from "./sections/InternshipManagement";
 import Users from "./sections/Users";
 import Subscribers from "./sections/Subscribers";
 import Queries from "./sections/Queries";
+import KitOrders from "./sections/KitOrders";
+import CourseEnrollments from "./sections/CourseEnrollments";
 
 function AdminDashboard() {
 	// States
@@ -31,6 +33,10 @@ function AdminDashboard() {
 				return <Subscribers />;
 			case "queries":
 				return <Queries />;
+			case "orderKits":
+				return <KitOrders />;
+			case "courseEnrollments":
+				return <CourseEnrollments />;
 			default:
 				return <DashboardHome />;
 		}

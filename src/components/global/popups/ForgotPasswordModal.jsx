@@ -13,6 +13,7 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { IMAGES } from "../../../constants/images";
 import { useTranslation } from "react-i18next";
+import axiosInstance from "../../../api/axiosInstance";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MOBILE_REGEX = /^[6-9]\d{9}$/;
@@ -20,28 +21,81 @@ const MOBILE_REGEX = /^[6-9]\d{9}$/;
 function ForgotPasswordModal({ show, handleClose, openLogin, openOtp }) {
 
 	const { t } = useTranslation();
+
 	const [loading, setLoading] = useState(false);
 
-	const { register, handleSubmit, formState: { errors }} = useForm();
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+		reset
+	} = useForm();
 
-	const onSubmit = (data) => {
-		console.log("Send reset OTP to:", data.identifier);
-		toast.success(t("auth.forgotPassword.toastSuccess"));
-		openOtp(data.identifier);
-	};
+	/**
+	 * Send OTP
+	 */
+	async function onSubmit(data) {
+
+		try {
+
+			setLoading(true);
+
+			const identifier = data.identifier.trim().toLowerCase();
+
+			await axiosInstance.post("/auth/send-otp", {
+				identifier
+			});
+
+			toast.success(
+				t("auth.forgotPassword.toastSuccess")
+			);
+
+			reset();
+
+			handleClose();
+
+			openOtp(identifier);
+
+		} catch (error) {
+
+			const message =
+				error.response?.data?.message ||
+				t("auth.forgotPassword.toastError") ||
+				"Failed to send OTP";
+
+			toast.error(message);
+
+		} finally {
+
+			setLoading(false);
+
+		}
+
+	}
 
 	return (
-		<Modal centered show={show} onHide={handleClose}>
+		<Modal
+			centered
+			show={show}
+			onHide={handleClose}
+			backdrop="static"
+		>
 			<Modal.Body className="p-4">
+
+				{/* Logo */}
 				<div className="text-center mb-3">
 					<Image
 						src={IMAGES.RED_LOGO}
 						style={{ height: "50px" }}
 					/>
 				</div>
+
+				{/* Title */}
 				<h4 className="text-center mb-2">
 					Forgot password?
 				</h4>
+
+				{/* Description */}
 				<p
 					className="text-center mb-4"
 					style={{
@@ -53,10 +107,13 @@ function ForgotPasswordModal({ show, handleClose, openLogin, openOtp }) {
 				</p>
 
 				<Form onSubmit={handleSubmit(onSubmit)}>
+
 					<Form.Group className="mb-3">
+
 						<Form.Label>
 							Email or Mobile Number
 						</Form.Label>
+
 						<Form.Control
 							type="text"
 							placeholder="Enter your email or mobile number"
@@ -69,11 +126,13 @@ function ForgotPasswordModal({ show, handleClose, openLogin, openOtp }) {
 							})}
 							isInvalid={Boolean(errors.identifier)}
 						/>
+
 						<Form.Control.Feedback type="invalid">
 							{errors.identifier?.message}
 						</Form.Control.Feedback>
 
 					</Form.Group>
+
 					<Button
 						type="submit"
 						className="w-100 btn-orange mb-3 fs-14"
@@ -96,7 +155,10 @@ function ForgotPasswordModal({ show, handleClose, openLogin, openOtp }) {
 						)}
 
 					</Button>
+
 				</Form>
+
+				{/* Back to login */}
 				<div className="text-center">
 					<button
 						type="button"
@@ -109,6 +171,7 @@ function ForgotPasswordModal({ show, handleClose, openLogin, openOtp }) {
 						Back to login
 					</button>
 				</div>
+
 			</Modal.Body>
 		</Modal>
 	);

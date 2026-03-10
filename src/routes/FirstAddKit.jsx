@@ -6,11 +6,15 @@
 import { useEffect, useState } from 'react';
 import { IMAGES } from '../constants/images';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
+import axiosInstance from '../api/axiosInstance';
 import { getPublicKits } from '../services/kitService';
 import HeroSection from "../components/global/HeroSection";
+import DeliveryForm from '../components/global/DeliveryForm';
 
 function FirstAddKit() {
 	const [kits, setKits] = useState([]);
+	const [showForm, setShowForm] = useState(false);
+	const [selectedKit, setSelectedKit] = useState(null);
 
 	// Fetch all kits data.
 	const fetchKits = async () => {
@@ -25,6 +29,55 @@ function FirstAddKit() {
 	useEffect(() => {
 		fetchKits();
 	}, []);
+
+	const openForm = (kit) => {
+		setSelectedKit(kit);
+		setShowForm(true);
+	};
+
+	const handleFormSubmit = async (formData) => {
+		try {
+
+			const orderRes = await axiosInstance.post("/payment/create-order", {
+				kitId: selectedKit._id,
+				price: selectedKit.newPrice || selectedKit.price,
+				customer: formData
+			});
+
+			const order = orderRes.data;
+
+			const options = {
+				key: import.meta.env.VITE_RAZORPAY_KEY_ID,
+				amount: order.amount,
+				currency: order.currency,
+				name: "First Aid Kit",
+				description: selectedKit.title,
+				order_id: order.id,
+
+				handler: async function (response) {
+
+					await axiosInstance.post(
+						"/payment/verify-payment",
+						{
+							...response,
+							customer: formData,
+							kitId: selectedKit._id
+						}
+					);
+
+					alert("Payment Successful");
+					setShowForm(false);
+
+				}
+			};
+
+			const razor = new window.Razorpay(options);
+			razor.open();
+
+		} catch (error) {
+			console.error("Payment error:", error);
+		}
+	};
 
 	return (
 		<>
@@ -72,7 +125,7 @@ function FirstAddKit() {
 													)}
 													<span className="text-danger fw-bold">₹{kit.newPrice ?? kit.price ?? "—"}</span>
 												</div>
-												<Button variant="warning" className="w-100 fw-semibold">Buy Kit</Button>
+												<Button variant="warning" className="w-100 fw-semibold" onClick={() => openForm(kit)}>Buy Kit</Button>
 											</Card.Body>
 										</Card>
 									</Col>
@@ -104,7 +157,7 @@ function FirstAddKit() {
 										<h4 className="fw-bold mb-4 text-dark">Need Help?</h4>
 										<div className="d-flex align-items-center mb-3">
 											<div className="bg-success text-white rounded-circle d-flex align-items-center justify-content-center flex-shrink-0 me-3" style={{ width: "44px", height: "44px" }}>
-												<i className="bi bi-telephone-fill"></i>
+												<i className="bi bi-telephone-fill" />
 											</div>
 											<div>
 												<small className="text-muted d-block">Call Us</small>
@@ -113,7 +166,7 @@ function FirstAddKit() {
 										</div>
 										<div className="d-flex align-items-center mb-3">
 											<div className="bg-success text-white rounded-circle d-flex align-items-center justify-content-center flex-shrink-0 me-3" style={{ width: "44px", height: "44px" }}>
-												<i className="bi bi-whatsapp"></i>
+												<i className="bi bi-whatsapp" />
 											</div>
 											<div>
 												<small className="text-muted d-block">WhatsApp</small>
@@ -122,7 +175,7 @@ function FirstAddKit() {
 										</div>
 										<div className="d-flex align-items-center">
 											<div className="bg-danger text-white rounded-circle d-flex align-items-center justify-content-center flex-shrink-0 me-3" style={{ width: "44px", height: "44px" }}>
-												<i className="bi bi-envelope-fill"></i>
+												<i className="bi bi-envelope-fill" />
 											</div>
 											<div>
 												<small className="text-muted d-block">Email Us</small>
@@ -136,6 +189,11 @@ function FirstAddKit() {
 					</Row>
 				</div>
 			</Container>
+			<DeliveryForm
+				show={showForm}
+				onClose={() => setShowForm(false)}
+				onSubmit={handleFormSubmit}
+			/>
 		</>
 	);
 }

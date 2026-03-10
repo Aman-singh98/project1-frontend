@@ -9,6 +9,7 @@ import { useTranslation } from "react-i18next";
 import { IMAGES } from "../constants/images";
 import axiosInstance from "../api/axiosInstance";
 import HeroSection from "../components/global/HeroSection";
+import DeliveryForm from "../components/global/DeliveryForm";
 import { SEED_COURSES, COURSES_PER_PAGE, MODES, PRICE_RANGES } from "../assets/data/courses";
 
 function Courses() {
@@ -19,6 +20,9 @@ function Courses() {
 	const [selectedPrices, setSelectedPrices] = useState([]);
 	const [courses, setCourses] = useState([]);
 	const [currentPage, setCurrentPage] = useState(1);
+
+	const [showForm, setShowForm] = useState(false);
+	const [selectedCourse, setSelectedCourse] = useState(null);
 
 	const fetchCourses = async () => {
 		try {
@@ -85,6 +89,47 @@ function Courses() {
 			return next;
 		});
 		resetToFirstPage();
+	};
+
+	const handleEnrollment = async (formData) => {
+		try {
+
+			const orderRes = await axiosInstance.post(
+				"/payment/create-course-order",
+				{
+					courseId: selectedCourse._id,
+					price: selectedCourse.price,
+					student: formData
+				}
+			);
+			const order = orderRes.data;
+			const options = {
+				key: import.meta.env.VITE_RAZORPAY_KEY_ID,
+				amount: order.amount,
+				currency: order.currency,
+				name: "Course Enrollment",
+				description: selectedCourse.title,
+				order_id: order.id,
+
+				handler: async function (response) {
+					await axiosInstance.post(
+						"/payment/verify-course-payment",
+						{
+							...response,
+							student: formData,
+							courseId: selectedCourse._id
+						}
+					);
+					alert("Enrollment Successful");
+					setShowForm(false);
+				}
+
+			};
+			const razor = new window.Razorpay(options);
+			razor.open();
+		} catch (error) {
+			console.error("Enrollment error:", error);
+		}
 	};
 
 	function clearFilters() {
@@ -232,7 +277,14 @@ function Courses() {
 																{course.description || "—"}
 															</p>
 															<div className="mt-auto d-flex justify-content-start">
-																<Button className="btn-orange" size="sm">
+																<Button
+																	className="btn-orange"
+																	size="sm"
+																	onClick={() => {
+																		setSelectedCourse(course);
+																		setShowForm(true);
+																	}}
+																>
 																	{t("courses.enrollNow")}
 																</Button>
 															</div>
@@ -273,6 +325,11 @@ function Courses() {
 					</Row>
 				</Container>
 			</section>
+			<DeliveryForm
+				show={showForm}
+				onClose={() => setShowForm(false)}
+				onSubmit={handleEnrollment}
+			/>
 		</>
 	);
 }

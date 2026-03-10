@@ -23,7 +23,6 @@ function TopBar() {
 	const [showForgot, setShowForgot] = useState(false);
 	const [showProfile, setShowProfile] = useState(false);
 	const [user, setUser] = useState(null);
-	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
 		async function restoreSession() {
@@ -31,9 +30,7 @@ function TopBar() {
 				const response = await axiosInstance.get("/user/profile");
 				setUser(response.data.user);
 			} catch {
-				setUser(null);
-			} finally {
-				setLoading(false);
+				setUser(null)
 			}
 		}
 
@@ -66,8 +63,6 @@ function TopBar() {
 			// Clear any local state if stored
 			setUser(null); // Only if you are using user state in Header
 
-			// Redirect to home page
-			// window.location.href = "/";
 		}
 	}
 
@@ -158,7 +153,7 @@ function TopBar() {
 										</Dropdown.Menu>
 									</Dropdown>
 								</OverlayTrigger>
-								{loading ? null : user ? (
+								{user ? (
 									<ProfileDropdown
 										user={user}
 										handleLogout={handleLogout}

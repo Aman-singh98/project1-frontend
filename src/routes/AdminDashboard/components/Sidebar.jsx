@@ -69,6 +69,18 @@ function Sidebar({ activeSection, setActiveSection }) {
 				>
 					{t("admin.nav.users")}
 				</Button>
+				<Button
+					className={`nav-btn ${activeSection === "orderKits" ? "active" : ""}`}
+					onClick={() => setActiveSection("orderKits")}
+				>
+					Order kits
+				</Button>
+				<Button
+					className={`nav-btn ${activeSection === "courseEnrollments" ? "active" : ""}`}
+					onClick={() => setActiveSection("courseEnrollments")}
+				>
+					Course enrollments
+				</Button>
 			</div>
 		</div>
 	);

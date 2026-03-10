@@ -5,8 +5,6 @@ import { useEffect, useState } from "react";
 import { Card, Row, Col, Form, Button, Table, Spinner, Image } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { createKit, getAdminKits, deleteKit } from "../../../services/kitService";
-import { ROUTERS } from "../../../constants/router";
-import { Navigate } from "react-router-dom";
 
 const defaultValues = {
 	title: "",

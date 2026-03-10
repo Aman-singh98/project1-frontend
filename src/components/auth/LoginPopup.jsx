@@ -22,7 +22,7 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MOBILE_REGEX = /^[6-9]\d{9}$/;
 
 const defaultValues = {
-	identifier: "user@test.com",
+	identifier: "amansingh160798@gmail.com",
 	password: "Test@123",
 };
 
@@ -33,16 +33,11 @@ function LoginModal({ show, handleClose, openSignup, openForgotPassword }) {
 	const [loading, setLoading] = useState(false);
 	const [showPassword, setShowPassword] = useState(false);
 
-	const {
-		register,
-		handleSubmit,
-		formState: { errors },
-		reset
-	} = useForm({ defaultValues });
+	const { register, handleSubmit, formState: { errors }, reset } = useForm({ defaultValues });
 
-	const togglePassword = () => {
+	function togglePassword() {
 		setShowPassword(prev => !prev);
-	};
+	}
 
 	async function onSubmit(data) {
 		try {
@@ -151,11 +146,7 @@ function LoginModal({ show, handleClose, openSignup, openForgotPassword }) {
 					>
 						{loading ? (
 							<>
-								<Spinner
-									size="sm"
-									animation="border"
-									className="me-2"
-								/>
+								<Spinner size="sm" animation="border" className="me-2" />
 								Logging in...
 							</>
 						) : (
