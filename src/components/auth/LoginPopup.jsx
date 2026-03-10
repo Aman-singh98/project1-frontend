@@ -26,7 +26,7 @@ const defaultValues = {
 	password: "Test@123",
 };
 
-function LoginModal({ show, handleClose, openSignup, openForgotPassword }) {
+function LoginModal({ show, handleClose, openSignup }) {
 
 	const navigate = useNavigate();
 
@@ -73,10 +73,6 @@ function LoginModal({ show, handleClose, openSignup, openForgotPassword }) {
 	function handleSignUp() {
 		handleClose();
 		openSignup();
-	}
-
-	function handleForgotPassword() {
-		openForgotPassword();
 	}
 
 	return (
@@ -155,11 +151,6 @@ function LoginModal({ show, handleClose, openSignup, openForgotPassword }) {
 					</Button>
 
 				</Form>
-				<p className="mb-1 text-center small">
-					<span className="text-orange cursor-pointer" onClick={handleForgotPassword}>
-						Forgot your password?
-					</span>
-				</p>
 				<hr />
 				<p className="text-center small mb-0">
 					Don't have an account?{" "}

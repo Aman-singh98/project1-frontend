@@ -1,7 +1,6 @@
 /**
  * Courses
  * Mobile-first, responsive, with search + filters + pagination
- * ! Add loader if wait for the api response.
  */
 import { useEffect, useMemo, useCallback, useState } from "react";
 import { Container, Row, Col, Card, Form, Button, Pagination } from "react-bootstrap";

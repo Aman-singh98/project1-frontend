@@ -17,7 +17,7 @@ const PARTNER_LOGOS = [
 function BrandingBar() {
 	return (
 		<div className="branding-bar bg-white border-bottom">
-			<div className="container branding-bar__inner py-2 py-md-3">
+			<div className="container branding-bar__inner py-2 py-md-3 d-flex flex-column flex-md-row align-items-center justify-content-between">
 				<div className="branding-bar__org d-flex align-items-center gap-2 gap-md-3">
 					<Image
 						src={IMAGES.RED_LOGO}
@@ -34,7 +34,9 @@ function BrandingBar() {
 						</p>
 					</div>
 				</div>
-				<IndianFlag />
+				<div className="d-flex justify-content-center my-2 my-md-0">
+					<IndianFlag />
+				</div>
 				<div className="branding-bar__partners d-flex justify-content-center justify-content-md-end flex-wrap gap-2 gap-md-3">
 					{PARTNER_LOGOS?.map((logo) => (
 						<Image

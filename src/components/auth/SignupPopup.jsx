@@ -4,7 +4,7 @@
  * Create account modal
  */
 
-import { Modal, Form, Button, Spinner } from "react-bootstrap";
+import { Modal, Form, Button, Spinner, InputGroup } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { ROUTERS } from "../../constants/router";
@@ -17,6 +17,7 @@ function RegisterModal({ show, handleClose, openLogin }) {
 
 	const navigate = useNavigate();
 	const [loading, setLoading] = useState(false);
+	const [showPassword, setShowPassword] = useState(false);
 
 	const {
 		register,
@@ -26,11 +27,8 @@ function RegisterModal({ show, handleClose, openLogin }) {
 	} = useForm();
 
 	async function onSubmit(data) {
-
 		try {
-
 			setLoading(true);
-
 			const response = await axiosInstance.post(
 				"/auth/register",
 				{
@@ -41,48 +39,34 @@ function RegisterModal({ show, handleClose, openLogin }) {
 					password: data.password
 				}
 			);
-
 			const { accessToken } = response.data;
-
 			/* store access token */
-
 			setAccessToken(accessToken);
-
 			/* fetch user profile */
-
 			const profileResponse =
 				await axiosInstance.get("/user/profile");
-
 			const user = profileResponse.data.user;
-
 			setCurrentUser(user);
-
 			toast.success("Account created successfully");
-
 			reset();
-
 			handleClose();
-
 			navigate("/");
-
 		} catch (error) {
-
 			const message =
 				error.response?.data?.message ||
 				"Registration failed";
-
 			toast.error(message);
-
 		} finally {
-
 			setLoading(false);
-
 		}
-
 	}
 
 	function handleLinkNavigation() {
 		handleClose();
+	}
+
+	function togglePassword() {
+		setShowPassword((prev) => !prev);
 	}
 
 	return (
@@ -94,20 +78,14 @@ function RegisterModal({ show, handleClose, openLogin }) {
 			backdrop="static"
 		>
 			<Modal.Body className="p-4">
-
 				<h4 className="fw-semibold mb-4">
 					Create account
 				</h4>
-
 				<Form onSubmit={handleSubmit(onSubmit)}>
-
-					{/* FULL NAME */}
-
 					<Form.Group className="mb-3">
 						<Form.Label className="form-label-custom">
 							FULL NAME
 						</Form.Label>
-
 						<Form.Control
 							type="text"
 							placeholder="Enter your full name"
@@ -125,19 +103,14 @@ function RegisterModal({ show, handleClose, openLogin }) {
 							})}
 							isInvalid={Boolean(errors.fullName)}
 						/>
-
 						<Form.Control.Feedback type="invalid">
 							{errors.fullName?.message}
 						</Form.Control.Feedback>
 					</Form.Group>
-
-					{/* EMAIL */}
-
 					<Form.Group className="mb-3">
 						<Form.Label className="form-label-custom">
 							EMAIL ADDRESS
 						</Form.Label>
-
 						<Form.Control
 							type="email"
 							placeholder="Enter your email"
@@ -152,19 +125,14 @@ function RegisterModal({ show, handleClose, openLogin }) {
 							})}
 							isInvalid={Boolean(errors.email)}
 						/>
-
 						<Form.Control.Feedback type="invalid">
 							{errors.email?.message}
 						</Form.Control.Feedback>
 					</Form.Group>
-
-					{/* MOBILE */}
-
 					<Form.Group className="mb-3">
 						<Form.Label className="form-label-custom">
 							MOBILE NUMBER
 						</Form.Label>
-
 						<Form.Control
 							type="text"
 							placeholder="Enter your mobile number"
@@ -180,14 +148,10 @@ function RegisterModal({ show, handleClose, openLogin }) {
 							})}
 							isInvalid={Boolean(errors.mobile)}
 						/>
-
 						<Form.Control.Feedback type="invalid">
 							{errors.mobile?.message}
 						</Form.Control.Feedback>
 					</Form.Group>
-
-					{/* AADHAAR */}
-
 					<Form.Group className="mb-3">
 						<Form.Label className="form-label-custom">
 							AADHAAR NUMBER
@@ -208,49 +172,42 @@ function RegisterModal({ show, handleClose, openLogin }) {
 							})}
 							isInvalid={Boolean(errors.aadhaar)}
 						/>
-
 						<Form.Control.Feedback type="invalid">
 							{errors.aadhaar?.message}
 						</Form.Control.Feedback>
 					</Form.Group>
-
-					{/* PASSWORD */}
-
 					<Form.Group className="mb-4">
-						<Form.Label className="form-label-custom">
-							PASSWORD
-						</Form.Label>
-
-						<Form.Control
-							type="password"
-							placeholder="Enter password"
-							className="input-green"
-							{...register("password", {
-								required:
-									"Password is required",
-								minLength: {
-									value: 6,
-									message:
-										"Password must be at least 6 characters"
-								}
-							})}
-							isInvalid={Boolean(errors.password)}
-						/>
-
+						<Form.Label className="form-label-custom">PASSWORD</Form.Label>
+						<InputGroup>
+							<Form.Control
+								type={showPassword ? "text" : "password"}
+								placeholder="Enter password"
+								className="input-green"
+								{...register("password", {
+									required:
+										"Password is required",
+									minLength: {
+										value: 6,
+										message:
+											"Password must be at least 6 characters"
+									}
+								})}
+								isInvalid={Boolean(errors.password)}
+							/>
+							<Button variant="" className="border-0" onClick={togglePassword}>
+								<i className={`bi ${showPassword ? "bi-eye-slash" : "bi-eye"}`} />
+							</Button>
+						</InputGroup>
 						<Form.Control.Feedback type="invalid">
 							{errors.password?.message}
 						</Form.Control.Feedback>
 					</Form.Group>
-
-					{/* SUBMIT BUTTON */}
-
 					<Button
 						type="submit"
 						className="w-100 btn-orange mb-3"
 						style={{ color: "#fff" }}
 						disabled={loading}
 					>
-
 						{loading ? (
 							<>
 								<Spinner
@@ -265,9 +222,6 @@ function RegisterModal({ show, handleClose, openLogin }) {
 						)}
 
 					</Button>
-
-					{/* TERMS */}
-
 					<p className="text-center small mb-2">
 						By continuing, you agree to our{" "}
 						<Link
@@ -278,11 +232,7 @@ function RegisterModal({ show, handleClose, openLogin }) {
 							terms & conditions
 						</Link>
 					</p>
-
 					<hr className="my-3 border-success opacity-25" />
-
-					{/* LOGIN LINK */}
-
 					<p className="text-center small mb-0">
 						Already have an account?{" "}
 						<span
@@ -295,9 +245,7 @@ function RegisterModal({ show, handleClose, openLogin }) {
 							Sign in here
 						</span>
 					</p>
-
 				</Form>
-
 			</Modal.Body>
 		</Modal>
 	);

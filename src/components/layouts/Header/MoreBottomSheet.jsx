@@ -9,8 +9,7 @@ function MoreBottomSheet({ show, handleClose }) {
 	const moreItems = [
 		{ path: ROUTERS.Mission, label: "Mission", icon: "bi-bullseye" },
 		{ path: ROUTERS.Vision, label: "Vision", icon: "bi-eye-fill" },
-		{ path: ROUTERS.FAQ, label: "FAQ", icon: "bi-question-circle-fill" },
-		// { path: ROUTERS.Blogs, label: "Blogs", icon: "bi-journal-text" }
+		{ path: ROUTERS.FAQ, label: "FAQ", icon: "bi-question-circle-fill" }
 	];
 
 	return (
