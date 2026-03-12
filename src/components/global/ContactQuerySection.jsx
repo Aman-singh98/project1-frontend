@@ -24,8 +24,8 @@ function ContactQuerySection() {
 							</div>
 							<div>
 								<h6 className="contact-label mb-1">Contact Number</h6>
-								<a href="tel:+917414425125" className="contact-link">
-									+91 7414425125
+								<a href="tel:+917404425125" className="contact-link">
+									+91 7404425125
 								</a>
 							</div>
 						</div>
@@ -53,10 +53,10 @@ function ContactQuerySection() {
 							<div>
 								<h6 className="contact-label mb-1">Email</h6>
 								<a
-									href="mailto:co@stjohncouncil.co.in"
+									href="mailto:ceo@stjohncouncil.co.in"
 									className="contact-link contact-email"
 								>
-									co@stjohncouncil.co.in
+									ceo@stjohncouncil.co.in
 								</a>
 							</div>
 						</div>

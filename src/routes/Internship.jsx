@@ -248,11 +248,11 @@ function Internship() {
 									<h6 className="fw-semibold mb-2">St. John Ambulance India</h6>
 									<div className="d-flex align-items-start mb-3">
 										<i className="bi bi-envelope-fill text-danger me-2" />
-										<a href="mailto:co@stjohncouncil.co.in" className="text-decoration-none text-dark">Email: co@stjohncouncil.co.in</a>
+										<a href="mailto:ceo@stjohncouncil.co.in" className="text-decoration-none text-dark">Email: ceo@stjohncouncil.co.in</a>
 									</div>
 									<div className="d-flex align-items-start mb-3">
 										<i className="bi bi-telephone-fill text-success me-2" />
-										<a href="tel:+917414425125" className="text-decoration-none text-dark">Phone: +91 7414425125</a>
+										<a href="tel:+917404425125" className="text-decoration-none text-dark">Phone: +91 7404425125</a>
 									</div>
 									<div className="d-flex align-items-start mb-4">
 										<i className="bi bi-geo-alt-fill text-danger me-2" />

@@ -24,7 +24,8 @@ export function clearCurrentUser() {
 }
 
 const axiosInstance = axios.create({
-  baseURL: "/api"
+  baseURL: "/api",
+  withCredentials: true
 });
 
 /**

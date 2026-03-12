@@ -86,7 +86,7 @@ function AmbulancePage() {
 												</div>
 												<div>
 													<small className="text-muted d-block">Email</small>
-													<a href="mailto:co@stjohncouncil.co.in" className="fw-semibold text-dark text-decoration-none">co@stjohncouncil.co.in</a>
+													<a href="mailto:ceo@stjohncouncil.co.in" className="fw-semibold text-dark text-decoration-none">ceo@stjohncouncil.co.in</a>
 												</div>
 											</ListGroup.Item>
 										</ListGroup>
@@ -181,11 +181,11 @@ function AmbulancePage() {
 							</p>
 							<div className="d-flex align-items-start mb-3 fw-medium">
 								<i className="bi bi-envelope-fill text-danger me-2" />
-								<a href="mailto:co@stjohncouncil.co.in" className="text-decoration-none text-dark">Email: co@stjohncouncil.co.in</a>
+								<a href="mailto:ceo@stjohncouncil.co.in" className="text-decoration-none text-dark">Email: ceo@stjohncouncil.co.in</a>
 							</div>
 							<div className="d-flex align-items-start mb-3 fw-medium">
 								<i className="bi bi-telephone-fill text-success me-2" />
-								<a href="tel:+917414425125" className="text-decoration-none text-dark">Phone: +91 7414425125</a>
+								<a href="tel:+917404425125" className="text-decoration-none text-dark">Phone: +91 7404425125</a>
 							</div>
 							<div className="d-flex align-items-start mb-4 fw-medium">
 								<i className="bi bi-geo-alt-fill text-danger me-2" />
@@ -193,7 +193,7 @@ function AmbulancePage() {
 							</div>
 							<div className="d-flex flex-wrap gap-2 gap-md-3">
 								<Button variant="danger">Contact Us</Button>
-								<Button variant="outline-success" href="tel:+917414425125">Call Now</Button>
+								<Button variant="outline-success" href="tel:+917404425125">Call Now</Button>
 							</div>
 						</Col>
 					</Row>

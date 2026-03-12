@@ -81,14 +81,14 @@ function Footer() {
 							</p>
 							<p className="footer-text d-flex align-items-center">
 								<i className={`${ICONS.Phone} me-2 text-orange`} />
-								<a href="tel:+917414425125" className="footer-link">
-									+91-7414425125
+								<a href="tel:+917404425125" className="footer-link">
+									+91-7404425125
 								</a>
 							</p>
 							<p className="footer-text d-flex align-items-center">
 								<i className={`${ICONS.Email} me-2 text-orange`} />
-								<a href="mailto:co@stjohncouncil.co.in" className="footer-link">
-									co@stjohncouncil.co.in
+								<a href="mailto:ceo@stjohncouncil.co.in" className="footer-link">
+									ceo@stjohncouncil.co.in
 								</a>
 							</p>
 						</Col>
