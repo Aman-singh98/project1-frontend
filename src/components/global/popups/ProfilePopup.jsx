@@ -1,136 +1,8 @@
-// /**
-//  * Admin Profile Modal
-//  */
-// import { useState, useEffect } from "react";
-// import axios from "axios";
-// import { Modal, Button, Row, Col, Badge, Image } from "react-bootstrap";
-// import { IMAGES } from "../../../constants/images";
-
-// function maskAadhaar(aadhaar) {
-// 	if (!aadhaar) return "";
-// 	return `XXXX-XXXX-${aadhaar.slice(-4)}`;
-// }
-
-// function ProfileModal({ show, onHide, user }) {
-// 	// States
-// 	const [courses, setCourses] = useState([]);
-// 	const [kits, setKits] = useState([]);
-// 	const [loading, setLoading] = useState(false);
-
-// 	const identifier = user?.email || user?.mobileNumber;
-
-// 	/**
-//  * Fetch user data (courses + kits)
-//  */
-// 	useEffect(() => {
-// 		if (!show) return;
-
-// 		// Only for normal users
-// 		if (user?.role === "admin") return;
-
-// 		async function fetchUserData() {
-// 			try {
-// 				setLoading(true);
-
-// 				const [coursesRes, kitsRes] = await Promise.all([
-// 					axios.get(`/api/enrolled-courses/${identifier}`),
-// 					axios.get(`/api/orders/purchased-kits/${identifier}`)
-// 				]);
-
-// 				setCourses(coursesRes.data || []);
-// 				setKits(kitsRes.data || []);
-// 				console.log(coursesRes.data, "coursesRes.data");
-// 				console.log(kitsRes.data, 'kitsRes.data');
-// 			} catch (error) {
-// 				console.error("Profile fetch error:", error);
-// 			} finally {
-// 				setLoading(false);
-// 			}
-// 		}
-
-// 		fetchUserData();
-// 	}, []);
-
-// 	if (!user) return null;
-// 	const initials = user.fullName?.split(" ").map((n) => n[0]).join("").toUpperCase();
-
-
-// 	return (
-// 		<Modal
-// 			show={show}
-// 			onHide={onHide}
-// 			centered
-// 			dialogClassName="gov-profile-dialog"
-// 			className="gov-profile-modal"
-// 		>
-// 			<div className="gov-header">
-// 				<Image
-// 					src={IMAGES.RED_LOGO}
-// 					alt="Organization Logo"
-// 					className="gov-logo"
-// 					fluid
-// 					rounded
-// 				/>
-// 				<div className="gov-title">
-// 					<h5>ST JOHN AMBULANCE</h5>
-// 					<span>INTERNATIONAL ASSOCIATION</span>
-// 				</div>
-// 			</div>
-// 			<Modal.Body>
-// 				<div className="profile-header">
-// 					<div className="profile-avatar">
-// 						{initials}
-// 					</div>
-// 					<div className="profile-info">
-// 						<h5>{user.fullName}</h5>
-// 						<Badge
-// 							bg={user.role === "admin" ? "danger" : "secondary"}
-// 							className="role-badge"
-// 						>
-// 							{user.role.toUpperCase()}
-// 						</Badge>
-// 					</div>
-// 				</div>
-// 				<hr />
-// 				<Row className="profile-details">
-// 					<Col xs={12}>
-// 						<label>Email Address</label>
-// 						<div>{user.email}</div>
-// 					</Col>
-// 					<Col xs={12}>
-// 						<label>Mobile Number</label>
-// 						<div>{user.mobileNumber}</div>
-// 					</Col>
-// 					<Col xs={12}>
-// 						<label>Aadhaar Number</label>
-// 						<div>{maskAadhaar(user.aadhaarNumber)}</div>
-// 					</Col>
-// 					<Col xs={12}>
-// 						<label>Account Created</label>
-// 						<div>
-// 							{new Date(user.createdAt).toLocaleDateString()}
-// 						</div>
-// 					</Col>
-// 				</Row>
-// 			</Modal.Body>
-// 			<Modal.Footer>
-// 				<Button className="gov-btn" onClick={onHide}>
-// 					Close
-// 				</Button>
-// 			</Modal.Footer>
-// 		</Modal>
-// 	);
-// }
-
-// export default ProfileModal;
-
 /**
  * User/Admin Profile Modal
  */
-
 import { useEffect, useState } from "react";
 import { Modal, Button, Row, Col, Badge, Image, Spinner } from "react-bootstrap";
-import axios from "axios";
 import { IMAGES } from "../../../constants/images";
 import axiosInstance from "../../../api/axiosInstance";
 
@@ -144,15 +16,7 @@ function ProfileModal({ show, onHide, user }) {
 	const [kits, setKits] = useState([]);
 	const [loading, setLoading] = useState(false);
 
-	// if (!user) return null;
-
 	const identifier = user?.email || user?.mobileNumber;
-
-	// const initials = user?.fullName
-	// 	?.split(" ")
-	// 	.map((n) => n[0])
-	// 	.join("")
-	// 	.toUpperCase();
 
 	/**
 	 * Fetch user data (courses + kits)
@@ -174,8 +38,6 @@ function ProfileModal({ show, onHide, user }) {
 
 				setCourses(coursesRes.data || []);
 				setKits(kitsRes.data || []);
-				console.log(coursesRes.data, "coursesRes.data");
-				console.log(kitsRes.data, 'kitsRes.data');
 			} catch (error) {
 				console.error("Profile fetch error:", error);
 			} finally {
@@ -316,10 +178,6 @@ function ProfileModal({ show, onHide, user }) {
 
 									<div className="small text-muted">
 										Payment: {kit.paymentStatus}
-									</div>
-
-									<div className="small text-muted">
-										Delivery: {kit.deliveryStatus}
 									</div>
 								</div>
 							))

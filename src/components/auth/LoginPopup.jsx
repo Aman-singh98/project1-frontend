@@ -52,7 +52,6 @@ function LoginModal({ show, handleClose, openSignup, setUser }) {
 			const profileResponse = await axiosInstance.get("/user/profile");
 			const user = profileResponse.data.user;
 			setUser(user);
-			console.log(user, "user 223");
 			setCurrentUser(user);
 			const role = user.role;
 			toast.success("Login successful");
