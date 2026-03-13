@@ -22,8 +22,8 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MOBILE_REGEX = /^[6-9]\d{9}$/;
 
 const defaultValues = {
-	identifier: "amansingh160798@gmail.com",
-	password: "Test@123",
+	identifier: "",
+	password: "",
 };
 
 function LoginModal({ show, handleClose, openSignup, setUser }) {
