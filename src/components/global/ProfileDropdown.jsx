@@ -65,7 +65,7 @@ function ProfileDropdown({ user, handleLogout, setShowProfile }) {
                 )}
                 <Dropdown.Divider className="m-0" />
                 <Dropdown.Item onClick={handleLogout} className="text-danger fw-semibold">
-                    <i class="bi bi-box-arrow-right me-2" />
+                    <i className="bi bi-box-arrow-right me-2" />
                     Logout
                 </Dropdown.Item>
             </Dropdown.Menu>

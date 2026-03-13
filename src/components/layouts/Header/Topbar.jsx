@@ -44,7 +44,6 @@ function TopBar() {
 				setUser(null);
 			}
 		}
-
 		restoreSession();
 	}, []);
 
@@ -229,6 +228,7 @@ function TopBar() {
 
 			<LoginModal
 				show={showLogin}
+				setUser={setUser}
 				handleClose={() => setShowLogin(false)}
 				openSignup={() => setShowRegister(true)}
 			/>

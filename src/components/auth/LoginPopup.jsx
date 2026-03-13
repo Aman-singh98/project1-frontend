@@ -26,7 +26,7 @@ const defaultValues = {
 	password: "Test@123",
 };
 
-function LoginModal({ show, handleClose, openSignup }) {
+function LoginModal({ show, handleClose, openSignup, setUser }) {
 
 	const navigate = useNavigate();
 
@@ -51,6 +51,8 @@ function LoginModal({ show, handleClose, openSignup }) {
 			setAccessToken(accessToken);
 			const profileResponse = await axiosInstance.get("/user/profile");
 			const user = profileResponse.data.user;
+			setUser(user);
+			console.log(user, "user 223");
 			setCurrentUser(user);
 			const role = user.role;
 			toast.success("Login successful");
